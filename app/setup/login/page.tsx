@@ -40,13 +40,19 @@ export default function AdminLoginPage() {
       return
     }
 
-    // Check if user is admin
-    if (!data.user?.user_metadata?.is_admin) {
-      setError("You do not have administrator access. Please contact your system administrator.")
-      await supabase.auth.signOut()
-      setIsLoading(false)
-      return
-    }
+  // Check if user is admin in admin_users table
+  const { data: admin, error: adminError } = await supabase
+    .from("admin_users")
+      .select("is_admin")
+        .eq("user_id", data.user.id)
+          .single()
+
+          if (adminError || !admin?.is_admin) {
+            setError("You do not have administrator access. Please contact your system administrator.")
+              await supabase.auth.signOut()
+                setIsLoading(false)
+                  return
+                  }
 
     router.push("/setup")
     router.refresh()
