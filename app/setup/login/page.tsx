@@ -35,25 +35,34 @@ export default function AdminLoginPage() {
     })
 
     if (signInError) {
+      console.error("[v0] Sign in error:", signInError)
       setError(signInError.message)
       setIsLoading(false)
       return
     }
 
-  // Check if user is admin in admin_users table
-  const { data: admin, error: adminError } = await supabase
-    .from("admin_users")
-      .select("is_admin")
-        .eq("user_id", data.user.id)
-          .single()
+    // Verify user exists and has admin access
+    if (!data?.user) {
+      setError("Login failed. Please try again.")
+      setIsLoading(false)
+      return
+    }
 
-          if (adminError || !admin?.is_admin) {
-            setError("You do not have administrator access. Please contact your system administrator.")
-              await supabase.auth.signOut()
-                setIsLoading(false)
-                  return
-                  }
+    console.log("[v0] User logged in:", data.user.id)
+    console.log("[v0] User metadata:", data.user.user_metadata)
 
+    // Check if user is admin via metadata (set during signup via trigger)
+    const isAdmin = data.user.user_metadata?.is_admin === true
+    
+    if (!isAdmin) {
+      console.error("[v0] User is not admin:", data.user.id)
+      setError("You do not have administrator access. Please contact your system administrator.")
+      await supabase.auth.signOut()
+      setIsLoading(false)
+      return
+    }
+
+    console.log("[v0] Admin verified, redirecting to setup")
     router.push("/setup")
     router.refresh()
   }

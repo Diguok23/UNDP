@@ -90,6 +90,44 @@ export default function AdminRegisterPage() {
         return
       }
 
+      console.log("[v0] User created:", data.user.id)
+      console.log("[v0] User metadata set:", data.user.user_metadata)
+
+      // Wait a moment for the trigger to fire and create admin_users entry
+      await new Promise(resolve => setTimeout(resolve, 1000))
+
+      // Verify admin_users entry was created
+      const { data: adminUser, error: adminCheckError } = await supabase
+        .from("admin_users")
+        .select("*")
+        .eq("id", data.user.id)
+        .single()
+
+      if (adminCheckError || !adminUser) {
+        console.error("[v0] Admin user entry not found:", adminCheckError)
+        console.warn("[v0] Attempting to create admin_users entry manually")
+        
+        // Manually create the admin_users entry as fallback
+        const { error: insertError } = await supabase
+          .from("admin_users")
+          .insert({
+            id: data.user.id,
+            email: formData.email,
+            full_name: formData.fullName,
+            department: formData.department,
+            access_reason: formData.reason,
+            is_admin: true,
+          })
+
+        if (insertError) {
+          console.error("[v0] Failed to create admin_users entry:", insertError)
+        } else {
+          console.log("[v0] Admin user entry created successfully")
+        }
+      } else {
+        console.log("[v0] Admin user entry verified:", adminUser)
+      }
+
       setSuccess(true)
     } catch (err) {
       console.error("[v0] Unexpected signup error:", err)
