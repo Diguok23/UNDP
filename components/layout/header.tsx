@@ -47,13 +47,13 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <img 
-              src="/images/unedf-logo.jpg" 
-              alt="UN Economic Development Fund Logo" 
+              src="/images/unedp-logo.jpg" 
+              alt="UN Economic Development Programme Logo" 
               className="h-12 w-auto"
             />
             <div className="hidden flex-col sm:flex">
-              <span className="text-xs font-semibold text-primary">UN Economic Development Fund</span>
-              <span className="text-lg font-bold text-primary">UNEDF</span>
+              <span className="text-xs font-semibold text-primary">UN Economic Development Programme</span>
+              <span className="text-lg font-bold text-primary">UNEDP</span>
             </div>
           </Link>
 

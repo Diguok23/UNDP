@@ -13,35 +13,35 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: {
-    default: 'UNEDF | UN Economic Development Fund',
-    template: '%s | UNEDF'
+    default: 'UNEDP | UN Economic Development Programme',
+    template: '%s | UNEDP'
   },
-  description: 'UNEDF works globally to promote sustainable economic development, reduce poverty and inequality, and build resilient economies for a better future.',
-  keywords: ['UNEDF', 'United Nations', 'economic development', 'sustainable development', 'poverty reduction', 'investment', 'global development'],
+  description: 'UNEDP works globally to promote sustainable economic development, reduce poverty and inequality, and build resilient economies for a better future.',
+  keywords: ['UNEDP', 'United Nations', 'economic development', 'sustainable development', 'poverty reduction', 'development programme', 'global development'],
   icons: {
-    icon: '/images/unedf-logo.jpg',
-    shortcut: '/images/unedf-logo.jpg',
-    apple: '/images/unedf-logo.jpg',
+    icon: '/images/unedp-logo.jpg',
+    shortcut: '/images/unedp-logo.jpg',
+    apple: '/images/unedp-logo.jpg',
   },
   openGraph: {
-    title: 'UNEDF | UN Economic Development Fund',
+    title: 'UNEDP | UN Economic Development Programme',
     description: 'Promoting sustainable economic development and reducing poverty worldwide.',
     type: 'website',
-    siteName: 'UNEDF',
+    siteName: 'UNEDP',
     images: [
       {
-        url: '/images/unedf-logo.jpg',
+        url: '/images/unedp-logo.jpg',
         width: 1200,
         height: 630,
-        alt: 'UN Economic Development Fund',
+        alt: 'UN Economic Development Programme',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'UNEDF | UN Economic Development Fund',
+    title: 'UNEDP | UN Economic Development Programme',
     description: 'Promoting sustainable economic development and reducing poverty worldwide.',
-    images: ['/images/unedf-logo.jpg'],
+    images: ['/images/unedp-logo.jpg'],
   },
     generator: 'v0.app'
 }

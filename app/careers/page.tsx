@@ -18,7 +18,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Join UNEDF and make a difference. Explore career opportunities with the UN Economic Development Fund.",
+    "Join UNEDP and make a difference. Explore career opportunities with the UN Economic Development Programme.",
 };
 
 const benefits = [
@@ -110,9 +110,9 @@ export default async function CareersPage() {
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold md:text-4xl">Why Join UNEDF?</h2>
+            <h2 className="text-3xl font-bold md:text-4xl">Why Join UNEDP?</h2>
             <p className="mt-4 text-muted-foreground">
-              At UNEDF, you will have the opportunity to contribute to
+              At UNEDP, you will have the opportunity to contribute to
               meaningful work that shapes the future of sustainable development.
             </p>
           </div>
@@ -288,7 +288,7 @@ export default async function CareersPage() {
           <h2 className="text-3xl font-bold">Ready to Make an Impact?</h2>
           <p className="mx-auto mt-4 max-w-2xl text-white/90">
             Join thousands of professionals who have chosen to build their
-            careers at UNEDF and contribute to sustainable development
+            careers at UNEDP and contribute to sustainable development
             worldwide.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -303,7 +303,7 @@ export default async function CareersPage() {
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-primary bg-transparent"
               >
-                About UNEDF
+                About UNEDP
               </Button>
             </Link>
           </div>

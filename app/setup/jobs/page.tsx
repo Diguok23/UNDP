@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Pencil, Eye, MapPin, Calendar, Users } from "lucide-react";
+import { Plus, Pencil, Eye, MapPin, Calendar, Users, Upload } from "lucide-react";
 import Link from "next/link";
 import { DeleteJobButton } from "@/components/admin/delete-job-button";
 
@@ -83,12 +83,20 @@ export default function JobsAdminPage() {
             Manage job postings and career opportunities
           </p>
         </div>
-        <Link href="/setup/jobs/new">
-          <Button>
-            <Plus className="mr-2 h-4 w-4" />
-            Post New Job
-          </Button>
-        </Link>
+        <div className="flex gap-2">
+          <Link href="/setup/jobs/bulk-upload">
+            <Button variant="outline">
+              <Upload className="mr-2 h-4 w-4" />
+              Bulk Upload
+            </Button>
+          </Link>
+          <Link href="/setup/jobs/new">
+            <Button>
+              <Plus className="mr-2 h-4 w-4" />
+              Post New Job
+            </Button>
+          </Link>
+        </div>
       </div>
 
       {jobs.length === 0 ? (

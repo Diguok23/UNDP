@@ -59,8 +59,8 @@ export default function AdminLoginPage() {
         <div className="mb-8 text-center">
           <Link href="/" className="inline-block">
             <img 
-              src="/images/unedf-logo.jpg" 
-              alt="UNEDF Logo" 
+              src="/images/unedp-logo.jpg" 
+              alt="UNEDP Logo" 
               className="mx-auto h-16 w-auto"
             />
           </Link>
@@ -93,7 +93,7 @@ export default function AdminLoginPage() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="admin@unedf.org"
+                  placeholder="admin@unedp.org"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required

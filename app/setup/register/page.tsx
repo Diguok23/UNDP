@@ -52,31 +52,51 @@ export default function AdminRegisterPage() {
       return
     }
 
-    const supabase = createClient()
+    try {
+      const supabase = createClient()
 
-    const { error: signUpError } = await supabase.auth.signUp({
-      email: formData.email,
-      password: formData.password,
-      options: {
-        emailRedirectTo: process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL ||
-          `${window.location.origin}/setup/login`,
-        data: {
-          full_name: formData.fullName,
-          department: formData.department,
-          access_reason: formData.reason,
-          is_admin: true, // In production, this should be false and require approval
+      const { data, error: signUpError } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          emailRedirectTo: process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL ||
+            `${window.location.origin}/setup/login`,
+          data: {
+            full_name: formData.fullName,
+            department: formData.department,
+            access_reason: formData.reason,
+            is_admin: true, // In production, this should be false and require approval
+          },
         },
-      },
-    })
+      })
 
-    if (signUpError) {
-      setError(signUpError.message)
+      if (signUpError) {
+        console.error("[v0] Signup error:", signUpError)
+        if (signUpError.message.includes("already registered")) {
+          setError("This email is already registered. Please sign in instead.")
+        } else if (signUpError.message.includes("valid email")) {
+          setError("Please enter a valid email address.")
+        } else {
+          setError(signUpError.message || "Failed to create account. Please try again.")
+        }
+        setIsLoading(false)
+        return
+      }
+
+      // Check if user was created successfully
+      if (!data?.user) {
+        setError("Registration failed. Please try again or contact support.")
+        setIsLoading(false)
+        return
+      }
+
+      setSuccess(true)
+    } catch (err) {
+      console.error("[v0] Unexpected signup error:", err)
+      setError("An unexpected error occurred. Please try again.")
+    } finally {
       setIsLoading(false)
-      return
     }
-
-    setSuccess(true)
-    setIsLoading(false)
   }
 
   if (success) {
@@ -86,8 +106,8 @@ export default function AdminRegisterPage() {
           <div className="mb-8 text-center">
             <Link href="/" className="inline-block">
               <img 
-                src="/images/unedf-logo.jpg" 
-                alt="UNEDF Logo" 
+              src="/images/unedp-logo.jpg" 
+              alt="UNEDP Logo"
                 className="mx-auto h-16 w-auto"
               />
             </Link>
@@ -130,8 +150,8 @@ export default function AdminRegisterPage() {
         <div className="mb-8 text-center">
           <Link href="/" className="inline-block">
             <img 
-              src="/images/unedf-logo.jpg" 
-              alt="UNEDF Logo" 
+              src="/images/unedp-logo.jpg" 
+              alt="UNEDP Logo" 
               className="mx-auto h-16 w-auto"
             />
           </Link>
@@ -177,7 +197,7 @@ export default function AdminRegisterPage() {
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="john.doe@unedf.org"
+                  placeholder="john.doe@unedp.org"
                   value={formData.email}
                   onChange={handleChange}
                   required

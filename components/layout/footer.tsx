@@ -46,13 +46,13 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block">
               <img 
-                src="/images/unedf-logo.jpg" 
-                alt="UN Economic Development Fund Logo" 
+                src="/images/unedp-logo.jpg" 
+                alt="UN Economic Development Programme Logo" 
                 className="h-16 w-auto rounded bg-white p-2"
               />
             </Link>
             <p className="mt-4 text-sm text-white/80">
-              UN Economic Development Fund
+              UN Economic Development Programme
             </p>
             <p className="mt-2 text-xs text-white/60">
               Promoting sustainable economic development worldwide
@@ -142,7 +142,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 text-center text-sm text-white/60">
-          <p>© {new Date().getFullYear()} UN Economic Development Fund (UNEDF)</p>
+          <p>© {new Date().getFullYear()} UN Economic Development Programme (UNEDP)</p>
         </div>
       </div>
     </footer>
