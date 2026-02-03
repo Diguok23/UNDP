@@ -1,19 +1,27 @@
 import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Newspaper, FileText, Users } from "lucide-react";
+import { Globe, Newspaper, FileText, Users, Briefcase, ClipboardList } from "lucide-react";
 import Link from "next/link";
 
 export default async function SetupDashboard() {
   const supabase = await createClient();
 
   // Fetch counts
-  const [countriesResult, newsResult, resourcesResult, subscriptionsResult] =
+  const [countriesResult, newsResult, resourcesResult, subscriptionsResult, jobsResult, applicationsResult] =
     await Promise.all([
       supabase.from("countries").select("*", { count: "exact", head: true }),
       supabase.from("news").select("*", { count: "exact", head: true }),
       supabase.from("resources").select("*", { count: "exact", head: true }),
       supabase.from("subscriptions").select("*", { count: "exact", head: true }),
+      supabase.from("jobs").select("*", { count: "exact", head: true }),
+      supabase.from("applications").select("*", { count: "exact", head: true }),
     ]);
+
+  // Count new applications
+  const { count: newApplicationsCount } = await supabase
+    .from("applications")
+    .select("*", { count: "exact", head: true })
+    .eq("status", "new");
 
   const stats = [
     {
@@ -39,6 +47,23 @@ export default async function SetupDashboard() {
       href: "/setup/resources",
       color: "text-amber-600",
       bgColor: "bg-amber-100",
+    },
+    {
+      title: "Job Postings",
+      value: jobsResult.count ?? 0,
+      icon: Briefcase,
+      href: "/setup/jobs",
+      color: "text-purple-600",
+      bgColor: "bg-purple-100",
+    },
+    {
+      title: "Applications",
+      value: applicationsResult.count ?? 0,
+      badge: newApplicationsCount ?? 0,
+      icon: ClipboardList,
+      href: "/setup/applications",
+      color: "text-cyan-600",
+      bgColor: "bg-cyan-100",
     },
     {
       title: "Subscribers",
@@ -88,11 +113,18 @@ export default async function SetupDashboard() {
           </CardHeader>
           <CardContent className="space-y-3">
             <Link
-              href="/setup/countries/new"
+              href="/setup/jobs/new"
               className="flex items-center gap-2 rounded-lg border p-3 transition-colors hover:bg-muted"
             >
-              <Globe className="h-5 w-5 text-primary" />
-              <span>Add New Country</span>
+              <Briefcase className="h-5 w-5 text-primary" />
+              <span>Post New Job</span>
+            </Link>
+            <Link
+              href="/setup/applications"
+              className="flex items-center gap-2 rounded-lg border p-3 transition-colors hover:bg-muted"
+            >
+              <ClipboardList className="h-5 w-5 text-primary" />
+              <span>Review Applications {newApplicationsCount ? `(${newApplicationsCount} new)` : ''}</span>
             </Link>
             <Link
               href="/setup/news/new"
@@ -102,11 +134,11 @@ export default async function SetupDashboard() {
               <span>Create News Article</span>
             </Link>
             <Link
-              href="/setup/resources/new"
+              href="/setup/countries/new"
               className="flex items-center gap-2 rounded-lg border p-3 transition-colors hover:bg-muted"
             >
-              <FileText className="h-5 w-5 text-primary" />
-              <span>Upload Resource</span>
+              <Globe className="h-5 w-5 text-primary" />
+              <span>Add New Country</span>
             </Link>
           </CardContent>
         </Card>
@@ -122,6 +154,12 @@ export default async function SetupDashboard() {
             </p>
             <ul className="list-inside list-disc space-y-2">
               <li>
+                <strong>Jobs:</strong> Post job openings and manage careers
+              </li>
+              <li>
+                <strong>Applications:</strong> Review and respond to applicants
+              </li>
+              <li>
                 <strong>Countries:</strong> Add and edit country program pages
               </li>
               <li>
@@ -129,9 +167,6 @@ export default async function SetupDashboard() {
               </li>
               <li>
                 <strong>Resources:</strong> Upload reports and publications
-              </li>
-              <li>
-                <strong>Settings:</strong> Configure site options
               </li>
             </ul>
           </CardContent>
