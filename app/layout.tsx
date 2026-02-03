@@ -12,13 +12,36 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: 'UNDP | United Nations Development Programme',
-  description: 'UNDP works in about 170 countries and territories, helping to eradicate poverty, reduce inequalities and exclusion, and build resilience so countries can sustain progress.',
-  keywords: ['UNDP', 'United Nations', 'development', 'sustainable development', 'poverty reduction', 'climate action'],
+  title: {
+    default: 'UNEDF | UN Economic Development Fund',
+    template: '%s | UNEDF'
+  },
+  description: 'UNEDF works globally to promote sustainable economic development, reduce poverty and inequality, and build resilient economies for a better future.',
+  keywords: ['UNEDF', 'United Nations', 'economic development', 'sustainable development', 'poverty reduction', 'investment', 'global development'],
+  icons: {
+    icon: '/images/unedf-logo.jpg',
+    shortcut: '/images/unedf-logo.jpg',
+    apple: '/images/unedf-logo.jpg',
+  },
   openGraph: {
-    title: 'UNDP | United Nations Development Programme',
-    description: 'Working to eradicate poverty and reduce inequalities through sustainable development.',
+    title: 'UNEDF | UN Economic Development Fund',
+    description: 'Promoting sustainable economic development and reducing poverty worldwide.',
     type: 'website',
+    siteName: 'UNEDF',
+    images: [
+      {
+        url: '/images/unedf-logo.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'UN Economic Development Fund',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'UNEDF | UN Economic Development Fund',
+    description: 'Promoting sustainable economic development and reducing poverty worldwide.',
+    images: ['/images/unedf-logo.jpg'],
   },
     generator: 'v0.app'
 }
