@@ -11,10 +11,14 @@ import {
   Settings,
   LayoutDashboard,
   ChevronLeft,
+  Briefcase,
+  ClipboardList,
 } from "lucide-react";
 
 const sidebarLinks = [
   { href: "/setup", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/setup/jobs", label: "Jobs", icon: Briefcase },
+  { href: "/setup/applications", label: "Applications", icon: ClipboardList },
   { href: "/setup/countries", label: "Countries", icon: Globe },
   { href: "/setup/news", label: "News & Stories", icon: Newspaper },
   { href: "/setup/resources", label: "Resources", icon: FileText },

@@ -24,6 +24,7 @@ const navigation = [
   { name: "Countries", href: "/countries" },
   { name: "Resources", href: "/resources" },
   { name: "News", href: "/news" },
+  { name: "Careers", href: "/careers" },
 ]
 
 const languages = [
