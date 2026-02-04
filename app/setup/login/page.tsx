@@ -11,50 +11,16 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Loader2, AlertCircle, Shield, RefreshCw } from "lucide-react"
+import { Loader2, AlertCircle, Shield } from "lucide-react"
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [isSyncing, setIsSyncing] = useState(false)
   const router = useRouter()
   const searchParams = useSearchParams()
   const errorParam = searchParams.get("error")
-
-  const handleSyncAdminStatus = async () => {
-    setIsSyncing(true)
-    setError(null)
-
-    try {
-      const response = await fetch("/api/admin/verify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        setError("Failed to sync admin status. Please try logging in again.")
-        setIsSyncing(false)
-        return
-      }
-
-      if (data.is_admin) {
-        setError(null)
-        // Refresh the page to allow login to proceed
-        window.location.reload()
-      } else {
-        setError("Your account is not registered as an admin. Please contact your system administrator.")
-      }
-    } catch (err) {
-      console.error("[v0] Sync error:", err)
-      setError("Failed to sync admin status. Please try again.")
-    } finally {
-      setIsSyncing(false)
-    }
-  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -75,61 +41,18 @@ export default function AdminLoginPage() {
       return
     }
 
-    // Verify user exists and has admin access
+    // Verify user exists and has authenticated successfully
     if (!data?.user) {
       setError("Login failed. Please try again.")
       setIsLoading(false)
       return
     }
 
-    console.log("[v0] User logged in:", data.user.id)
-    console.log("[v0] User metadata:", data.user.user_metadata)
+    console.log("[v0] User logged in successfully:", data.user.id)
+    console.log("[v0] User email:", data.user.email)
 
-    // Check if user is admin via metadata (set during signup via trigger)
-    let isAdmin = data.user.user_metadata?.is_admin === true
-    
-    // If not in metadata, check admin_users table as fallback
-    if (!isAdmin) {
-      console.log("[v0] Checking admin_users table as fallback...")
-      const { data: adminUser, error: adminError } = await supabase
-        .from("admin_users")
-        .select("is_admin, id")
-        .eq("id", data.user.id)
-        .single()
-
-      if (adminError) {
-        console.error("[v0] Error checking admin_users:", adminError)
-      }
-
-      if (adminUser?.is_admin) {
-        console.log("[v0] User found in admin_users table with is_admin=true")
-        isAdmin = true
-        
-        // Update user metadata to reflect admin status
-        const { error: updateError } = await supabase.auth.updateUser({
-          data: {
-            ...data.user.user_metadata,
-            is_admin: true,
-          },
-        })
-        
-        if (updateError) {
-          console.warn("[v0] Failed to update user metadata:", updateError)
-        } else {
-          console.log("[v0] User metadata updated with is_admin=true")
-        }
-      }
-    }
-    
-    if (!isAdmin) {
-      console.error("[v0] User is not admin:", data.user.id)
-      setError("You do not have administrator access. Please contact your system administrator.")
-      await supabase.auth.signOut()
-      setIsLoading(false)
-      return
-    }
-
-    console.log("[v0] Admin verified, redirecting to setup")
+    // User is authenticated, redirect to admin dashboard
+    console.log("[v0] Authenticated user, redirecting to setup dashboard")
     router.push("/setup")
     router.refresh()
   }
@@ -206,31 +129,10 @@ export default function AdminLoginPage() {
             </form>
           </CardContent>
           <CardFooter className="flex flex-col gap-4">
-            {error && error.includes("not have administrator access") && (
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full bg-transparent"
-                onClick={handleSyncAdminStatus}
-                disabled={isSyncing}
-              >
-                {isSyncing ? (
-                  <>
-                    <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-                    Syncing...
-                  </>
-                ) : (
-                  <>
-                    <RefreshCw className="mr-2 h-4 w-4" />
-                    Sync Admin Status
-                  </>
-                )}
-              </Button>
-            )}
             <div className="text-center text-sm text-muted-foreground">
-              {"Don't have admin access? "}
+              {"Don't have an account? "}
               <Link href="/setup/register" className="text-primary hover:underline">
-                Request access
+                Create one
               </Link>
             </div>
             <div className="space-y-2 text-center text-sm">
