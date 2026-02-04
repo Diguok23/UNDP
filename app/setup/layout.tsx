@@ -1,9 +1,11 @@
 "use client";
 
 import type React from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { createClient } from "@/lib/supabase/client";
 import {
   Globe,
   Newspaper,
@@ -13,7 +15,10 @@ import {
   ChevronLeft,
   Briefcase,
   ClipboardList,
+  LogOut,
+  Loader2,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const sidebarLinks = [
   { href: "/setup", label: "Dashboard", icon: LayoutDashboard },
@@ -31,6 +36,72 @@ export default function SetupLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const supabase = createClient();
+        const {
+          data: { session },
+          error,
+        } = await supabase.auth.getSession();
+
+        if (error) {
+          console.error("[v0] Error checking session:", error);
+          setIsAuthenticated(false);
+          setIsLoading(false);
+          router.push("/setup/login");
+          return;
+        }
+
+        if (session?.user) {
+          setIsAuthenticated(true);
+          setUserEmail(session.user.email || null);
+          setIsLoading(false);
+        } else {
+          setIsAuthenticated(false);
+          setIsLoading(false);
+          router.push("/setup/login");
+        }
+      } catch (err) {
+        console.error("[v0] Auth check error:", err);
+        setIsAuthenticated(false);
+        setIsLoading(false);
+        router.push("/setup/login");
+      }
+    };
+
+    checkAuth();
+  }, [router]);
+
+  const handleLogout = async () => {
+    try {
+      const supabase = createClient();
+      await supabase.auth.signOut();
+      router.push("/setup/login");
+    } catch (err) {
+      console.error("[v0] Logout error:", err);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <p className="text-muted-foreground">Loading admin dashboard...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return null; // Router will redirect to login
+  }
 
   return (
     <div className="flex min-h-screen bg-muted/30">
@@ -41,8 +112,8 @@ export default function SetupLayout({
           <div className="flex h-16 items-center border-b px-6">
             <Link href="/setup" className="flex items-center gap-2">
               <img
-                src="/images/unedf-logo.jpg"
-                alt="UNEDF Logo"
+                src="/images/unedp-logo.jpg"
+                alt="UNEDP Logo"
                 className="h-8 w-auto"
               />
               <span className="font-semibold text-primary">Admin</span>
@@ -73,8 +144,23 @@ export default function SetupLayout({
             })}
           </nav>
 
-          {/* Back to site */}
-          <div className="border-t p-4">
+          {/* User info and logout */}
+          <div className="border-t p-4 space-y-3">
+            {userEmail && (
+              <div className="text-xs text-muted-foreground truncate">
+                <div className="font-medium text-foreground mb-1">Logged in as</div>
+                <div className="break-words">{userEmail}</div>
+              </div>
+            )}
+            <Button
+              variant="outline"
+              size="sm"
+              className="w-full justify-start bg-transparent"
+              onClick={handleLogout}
+            >
+              <LogOut className="mr-2 h-4 w-4" />
+              Logout
+            </Button>
             <Link
               href="/"
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
