@@ -6,8 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "What We Do | UNDP",
-  description: "Explore UNDP's work across sustainable development, climate action, governance, gender equality, and crisis response.",
+  title: "What We Do | UNEDP",
+  description: "Explore UNEDP's work across sustainable development, climate action, governance, gender equality, and crisis response.",
 }
 
 const thematicAreas = [
@@ -188,7 +188,7 @@ export default function WhatWeDoPage() {
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our Focus Areas</h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Explore the key thematic areas where UNDP is driving sustainable development impact.
+              Explore the key thematic areas where UNEDP is driving sustainable development impact.
             </p>
           </div>
 
