@@ -114,7 +114,7 @@ export default function WhatWeDoPage() {
               What We Do
             </h1>
             <p className="mt-6 text-xl text-white/90 leading-relaxed">
-              UNDP works across multiple interconnected areas to help countries achieve the 
+              UNEDP works across multiple interconnected areas to help countries achieve the 
               Sustainable Development Goals and leave no one behind.
             </p>
           </div>
@@ -131,7 +131,7 @@ export default function WhatWeDoPage() {
               </h2>
               <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
                 Today's development challenges are interconnected. Poverty, climate change, 
-                inequality, and weak governance reinforce each other. That's why UNDP takes 
+                inequality, and weak governance reinforce each other. That's why UNEDP takes 
                 an integrated approach, working across sectors to maximize impact.
               </p>
               <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
