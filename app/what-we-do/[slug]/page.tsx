@@ -9,7 +9,7 @@ const workAreas = {
   "sustainable-development": {
     title: "Sustainable Development",
     subtitle: "Advancing the 2030 Agenda",
-    description: "UNDP is the lead UN agency helping countries achieve the Sustainable Development Goals. We work with governments, civil society, and the private sector to build pathways out of poverty while protecting the planet.",
+    description: "UNEDP is the lead UN agency helping countries achieve the Sustainable Development Goals. We work with governments, civil society, and the private sector to build pathways out of poverty while protecting the planet.",
     heroImage: "/images/sdg-wheel.svg",
     challenges: [
       "Progress on the SDGs has stalled or reversed in many areas",
@@ -135,7 +135,7 @@ const workAreas = {
   "gender-equality": {
     title: "Gender Equality",
     subtitle: "Empowering Women and Girls",
-    description: "UNDP integrates gender equality across all our work while implementing targeted initiatives to advance women's rights, leadership, and economic empowerment.",
+    description: "UNEDP integrates gender equality across all our work while implementing targeted initiatives to advance women's rights, leadership, and economic empowerment.",
     heroImage: "/images/image-18-credit-undp-nigeria-amalachukwu-ibeneme-crop.jpg",
     challenges: [
       "No country has achieved full gender equality",
@@ -177,7 +177,7 @@ const workAreas = {
   "crisis-resilience": {
     title: "Crisis Response & Resilience",
     subtitle: "From Crisis to Recovery",
-    description: "UNDP works before, during, and after crises to help communities prepare, respond, and recover. We focus on building long-term resilience while addressing immediate needs.",
+    description: "UNEDP works before, during, and after crises to help communities prepare, respond, and recover. We focus on building long-term resilience while addressing immediate needs.",
     heroImage: "/images/image-1-credit-undp-afghanistan.jpg",
     challenges: [
       "Record 360 million people need humanitarian assistance",
@@ -205,7 +205,7 @@ const workAreas = {
     ],
     relatedNews: [
       {
-        title: "UNDP scales up crisis response capacity",
+        title: "UNEDP scales up crisis response capacity",
         date: "January 2025",
         slug: "crisis-response-scale"
       },
@@ -219,7 +219,7 @@ const workAreas = {
   "governance-institutions": {
     title: "Governance & Institutions",
     subtitle: "Building Effective, Accountable Institutions",
-    description: "UNDP strengthens governance systems and institutions to be more inclusive, effective, and accountable. We work on rule of law, anti-corruption, and digital transformation.",
+    description: "UNEDP strengthens governance systems and institutions to be more inclusive, effective, and accountable. We work on rule of law, anti-corruption, and digital transformation.",
     heroImage: "/images/undp60-crop.jpg",
     challenges: [
       "Trust in institutions declining globally",
@@ -451,7 +451,7 @@ export default async function WorkAreaPage({ params }: { params: Promise<{ slug:
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl font-bold mb-4">Get Involved</h2>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Learn more about how UNDP is working on {area.title.toLowerCase()} around the world.
+            Learn more about how UNEDP is working on {area.title.toLowerCase()} around the world.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button asChild>
