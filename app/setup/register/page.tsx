@@ -6,6 +6,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
+import { isAllowedDomain, getGenericDomainError } from "@/lib/auth/domain-validator"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -39,6 +40,13 @@ export default function AdminRegisterPage() {
     e.preventDefault()
     setError(null)
     setIsLoading(true)
+
+    // Validate domain
+    if (!isAllowedDomain(formData.email)) {
+      setError(getGenericDomainError())
+      setIsLoading(false)
+      return
+    }
 
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match")
@@ -235,12 +243,13 @@ export default function AdminRegisterPage() {
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="john.doe@unedp.org"
+                  placeholder="your.name@unedp.org"
                   value={formData.email}
                   onChange={handleChange}
                   required
                   disabled={isLoading}
                 />
+                <p className="text-xs text-muted-foreground">Use your official work email address</p>
               </div>
               
               <div className="space-y-2">

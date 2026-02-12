@@ -1,177 +1,127 @@
-import { createClient } from "@/lib/supabase/server";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Newspaper, FileText, Users, Briefcase, ClipboardList } from "lucide-react";
-import Link from "next/link";
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { LogIn, UserPlus, Lock, Clock, Shield, BarChart3 } from "lucide-react"
 
-export default async function SetupDashboard() {
-  const supabase = await createClient();
+export const metadata = {
+  title: "Admin Portal | UNEDP",
+  description: "UNEDP Administration Portal - Manage careers, content, and operations.",
+}
 
-  // Fetch counts
-  const [countriesResult, newsResult, resourcesResult, subscriptionsResult, jobsResult, applicationsResult] =
-    await Promise.all([
-      supabase.from("countries").select("*", { count: "exact", head: true }),
-      supabase.from("news").select("*", { count: "exact", head: true }),
-      supabase.from("resources").select("*", { count: "exact", head: true }),
-      supabase.from("subscriptions").select("*", { count: "exact", head: true }),
-      supabase.from("jobs").select("*", { count: "exact", head: true }),
-      supabase.from("applications").select("*", { count: "exact", head: true }),
-    ]);
-
-  // Count new applications
-  const { count: newApplicationsCount } = await supabase
-    .from("applications")
-    .select("*", { count: "exact", head: true })
-    .eq("status", "new");
-
-  const stats = [
-    {
-      title: "Countries",
-      value: countriesResult.count ?? 0,
-      icon: Globe,
-      href: "/setup/countries",
-      color: "text-blue-600",
-      bgColor: "bg-blue-100",
-    },
-    {
-      title: "News Articles",
-      value: newsResult.count ?? 0,
-      icon: Newspaper,
-      href: "/setup/news",
-      color: "text-green-600",
-      bgColor: "bg-green-100",
-    },
-    {
-      title: "Resources",
-      value: resourcesResult.count ?? 0,
-      icon: FileText,
-      href: "/setup/resources",
-      color: "text-amber-600",
-      bgColor: "bg-amber-100",
-    },
-    {
-      title: "Job Postings",
-      value: jobsResult.count ?? 0,
-      icon: Briefcase,
-      href: "/setup/jobs",
-      color: "text-purple-600",
-      bgColor: "bg-purple-100",
-    },
-    {
-      title: "Applications",
-      value: applicationsResult.count ?? 0,
-      badge: newApplicationsCount ?? 0,
-      icon: ClipboardList,
-      href: "/setup/applications",
-      color: "text-cyan-600",
-      bgColor: "bg-cyan-100",
-    },
-    {
-      title: "Subscribers",
-      value: subscriptionsResult.count ?? 0,
-      icon: Users,
-      href: "/setup/settings",
-      color: "text-rose-600",
-      bgColor: "bg-rose-100",
-    },
-  ];
-
+export default function SetupHomePage() {
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold text-foreground">Admin Dashboard</h1>
-        <p className="mt-2 text-muted-foreground">
-          Manage your UNEDF website content
-        </p>
-      </div>
-
-      {/* Stats Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {stats.map((stat) => (
-          <Link key={stat.title} href={stat.href}>
-            <Card className="transition-shadow hover:shadow-lg">
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium text-muted-foreground">
-                  {stat.title}
-                </CardTitle>
-                <div className={`rounded-lg p-2 ${stat.bgColor}`}>
-                  <stat.icon className={`h-4 w-4 ${stat.color}`} />
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold">{stat.value}</div>
-              </CardContent>
-            </Card>
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-background to-muted">
+      {/* Navigation */}
+      <nav className="border-b bg-background/50 backdrop-blur supports-[backdrop-filter]:bg-background/50">
+        <div className="container mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <img
+              src="/images/unedp-logo.jpg"
+              alt="UNEDP Logo"
+              className="h-10 w-auto"
+            />
+            <span className="hidden sm:inline font-semibold text-foreground">
+              Admin Portal
+            </span>
           </Link>
-        ))}
-      </div>
 
-      {/* Quick Actions */}
-      <div className="grid gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <Link
-              href="/setup/jobs/new"
-              className="flex items-center gap-2 rounded-lg border p-3 transition-colors hover:bg-muted"
-            >
-              <Briefcase className="h-5 w-5 text-primary" />
-              <span>Post New Job</span>
-            </Link>
-            <Link
-              href="/setup/applications"
-              className="flex items-center gap-2 rounded-lg border p-3 transition-colors hover:bg-muted"
-            >
-              <ClipboardList className="h-5 w-5 text-primary" />
-              <span>Review Applications {newApplicationsCount ? `(${newApplicationsCount} new)` : ''}</span>
-            </Link>
-            <Link
-              href="/setup/news/new"
-              className="flex items-center gap-2 rounded-lg border p-3 transition-colors hover:bg-muted"
-            >
-              <Newspaper className="h-5 w-5 text-primary" />
-              <span>Create News Article</span>
-            </Link>
-            <Link
-              href="/setup/countries/new"
-              className="flex items-center gap-2 rounded-lg border p-3 transition-colors hover:bg-muted"
-            >
-              <Globe className="h-5 w-5 text-primary" />
-              <span>Add New Country</span>
-            </Link>
-          </CardContent>
-        </Card>
+          <div className="flex items-center gap-2">
+            <Button asChild variant="outline" className="bg-transparent">
+              <Link href="/setup/login">Sign In</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/setup/register">Register</Link>
+            </Button>
+          </div>
+        </div>
+      </nav>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Getting Started</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4 text-sm text-muted-foreground">
-            <p>
-              Welcome to the UNEDF Admin Dashboard. From here you can manage all
-              content on your website.
+      {/* Hero Section */}
+      <main className="flex-1 flex flex-col items-center justify-center container mx-auto max-w-6xl px-4 py-20">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <h1 className="text-5xl font-bold tracking-tight mb-4 text-balance">
+            UNEDP Admin Portal
+          </h1>
+          <p className="text-xl text-muted-foreground mb-8 text-balance">
+            Manage careers, applications, content, and all your organizational operations from one central dashboard.
+          </p>
+
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Button size="lg" asChild>
+              <Link href="/setup/login" className="gap-2">
+                <LogIn className="h-5 w-5" />
+                Sign In
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild className="bg-transparent">
+              <Link href="/setup/register" className="gap-2">
+                <UserPlus className="h-5 w-5" />
+                Create Account
+              </Link>
+            </Button>
+          </div>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-3 gap-8 w-full mt-20 mb-16">
+          {/* Feature 1 */}
+          <div className="rounded-lg border bg-card p-6 text-center">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+              <BarChart3 className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="text-lg font-semibold mb-2">Centralized Management</h3>
+            <p className="text-sm text-muted-foreground">
+              Manage all aspects of your organization from a unified dashboard
             </p>
-            <ul className="list-inside list-disc space-y-2">
-              <li>
-                <strong>Jobs:</strong> Post job openings and manage careers
-              </li>
-              <li>
-                <strong>Applications:</strong> Review and respond to applicants
-              </li>
-              <li>
-                <strong>Countries:</strong> Add and edit country program pages
-              </li>
-              <li>
-                <strong>News:</strong> Publish articles and stories
-              </li>
-              <li>
-                <strong>Resources:</strong> Upload reports and publications
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+
+          {/* Feature 2 */}
+          <div className="rounded-lg border bg-card p-6 text-center">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+              <Clock className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="text-lg font-semibold mb-2">Real-time Updates</h3>
+            <p className="text-sm text-muted-foreground">
+              Stay updated with live application submissions and content changes
+            </p>
+          </div>
+
+          {/* Feature 3 */}
+          <div className="rounded-lg border bg-card p-6 text-center">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+              <Shield className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="text-lg font-semibold mb-2">Secure Access</h3>
+            <p className="text-sm text-muted-foreground">
+              Role-based access control and secure authentication
+            </p>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="rounded-lg border bg-gradient-to-r from-primary/5 to-primary/10 p-12 text-center w-full">
+          <h2 className="text-2xl font-bold mb-4">Ready to get started?</h2>
+          <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+            Sign in with your work email to access the admin dashboard and manage your operations.
+          </p>
+          <Button size="lg" asChild>
+            <Link href="/setup/login">Sign In Now</Link>
+          </Button>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t bg-muted/50 py-8">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} UN Economic Development Programme (UNEDP). All rights reserved.
+            </p>
+            <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">
+              Back to Website
+            </Link>
+          </div>
+        </div>
+      </footer>
     </div>
-  );
+  )
 }

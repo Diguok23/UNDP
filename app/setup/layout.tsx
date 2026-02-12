@@ -21,7 +21,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 const sidebarLinks = [
-  { href: "/setup", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/setup/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/setup/jobs", label: "Jobs", icon: Briefcase },
   { href: "/setup/applications", label: "Applications", icon: ClipboardList },
   { href: "/setup/countries", label: "Countries", icon: Globe },
@@ -43,6 +43,16 @@ export default function SetupLayout({
 
   useEffect(() => {
     const checkAuth = async () => {
+      // Public pages that don't require authentication
+      const publicPages = ["/setup", "/setup/login", "/setup/register"];
+      const isPublicPage = publicPages.includes(pathname);
+
+      if (isPublicPage) {
+        setIsLoading(false);
+        setIsAuthenticated(false);
+        return;
+      }
+
       try {
         const supabase = createClient();
         const {
@@ -76,7 +86,7 @@ export default function SetupLayout({
     };
 
     checkAuth();
-  }, [router]);
+  }, [router, pathname]);
 
   const handleLogout = async () => {
     try {
@@ -88,7 +98,11 @@ export default function SetupLayout({
     }
   };
 
-  if (isLoading) {
+  // Public pages that don't require authentication
+  const publicPages = ["/setup", "/setup/login", "/setup/register"];
+  const isPublicPage = publicPages.includes(pathname);
+
+  if (isLoading && !isPublicPage) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="flex flex-col items-center gap-4">
@@ -99,8 +113,13 @@ export default function SetupLayout({
     );
   }
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated && !isPublicPage) {
     return null; // Router will redirect to login
+  }
+
+  // Render public pages without sidebar
+  if (isPublicPage) {
+    return children;
   }
 
   return (
@@ -110,7 +129,7 @@ export default function SetupLayout({
         <div className="flex h-full flex-col">
           {/* Logo */}
           <div className="flex h-16 items-center border-b px-6">
-            <Link href="/setup" className="flex items-center gap-2">
+            <Link href="/setup/dashboard" className="flex items-center gap-2">
               <img
                 src="/images/unedp-logo.jpg"
                 alt="UNEDP Logo"
@@ -125,7 +144,7 @@ export default function SetupLayout({
             {sidebarLinks.map((link) => {
               const isActive =
                 pathname === link.href ||
-                (link.href !== "/setup" && pathname.startsWith(link.href));
+                (link.href !== "/setup/dashboard" && pathname.startsWith(link.href));
               return (
                 <Link
                   key={link.href}

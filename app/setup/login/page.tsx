@@ -6,6 +6,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
+import { isAllowedDomain, getGenericDomainError } from "@/lib/auth/domain-validator"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -26,6 +27,13 @@ export default function AdminLoginPage() {
     e.preventDefault()
     setError(null)
     setIsLoading(true)
+
+    // Validate domain
+    if (!isAllowedDomain(email)) {
+      setError(getGenericDomainError())
+      setIsLoading(false)
+      return
+    }
 
     const supabase = createClient()
 
@@ -52,8 +60,8 @@ export default function AdminLoginPage() {
     console.log("[v0] User email:", data.user.email)
 
     // User is authenticated, redirect to admin dashboard
-    console.log("[v0] Authenticated user, redirecting to setup dashboard")
-    router.push("/setup")
+    console.log("[v0] Authenticated user, redirecting to admin dashboard")
+    router.push("/setup/dashboard")
     router.refresh()
   }
 
@@ -135,17 +143,10 @@ export default function AdminLoginPage() {
                 Create one
               </Link>
             </div>
-            <div className="space-y-2 text-center text-sm">
-              <div>
-                <Link href="/setup/troubleshooting" className="text-primary hover:underline">
-                  Having trouble? Get help
-                </Link>
-              </div>
-              <div>
-                <Link href="/" className="text-muted-foreground hover:text-foreground">
-                  Return to main website
-                </Link>
-              </div>
+            <div className="text-center text-sm">
+              <Link href="/" className="text-muted-foreground hover:text-foreground">
+                Return to main website
+              </Link>
             </div>
           </CardFooter>
         </Card>
