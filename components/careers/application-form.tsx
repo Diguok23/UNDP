@@ -77,6 +77,41 @@ export function ApplicationForm({ jobId, jobTitle }: ApplicationFormProps) {
         throw new Error(insertError.message);
       }
 
+      // Calculate deadline (3 days from now)
+      const deadline = new Date();
+      deadline.setDate(deadline.getDate() + 3);
+      const deadlineString = deadline.toLocaleDateString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+
+      // Send confirmation email
+      console.log("[v0] Sending confirmation email to:", formData.email);
+      const emailResponse = await fetch("/api/send-application-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          applicantName: formData.full_name,
+          applicantEmail: formData.email,
+          jobTitle: jobTitle,
+          deadline: deadlineString,
+        }),
+      });
+
+      if (!emailResponse.ok) {
+        console.warn(
+          "[v0] Failed to send confirmation email:",
+          emailResponse.statusText
+        );
+        // Don't fail the application submission if email fails
+      } else {
+        console.log("[v0] Confirmation email sent successfully");
+      }
+
       setSuccess(true);
     } catch (err) {
       setError(
@@ -95,14 +130,25 @@ export function ApplicationForm({ jobId, jobTitle }: ApplicationFormProps) {
             <CheckCircle className="h-8 w-8 text-green-600" />
           </div>
           <h3 className="text-xl font-semibold">Application Submitted!</h3>
-          <p className="mt-2 text-muted-foreground">
+          <p className="mt-4 text-muted-foreground">
             Thank you for applying for the <strong>{jobTitle}</strong> position.
-            We will review your application and contact you if your profile
-            matches our requirements.
           </p>
+          <div className="mt-4 rounded-lg bg-blue-50 p-4 text-left text-sm text-blue-900">
+            <p className="font-semibold mb-2">📧 Check Your Email</p>
+            <p className="mb-2">
+              We've sent a confirmation email with instructions on how to proceed. Due to the high volume of applications, we require you to:
+            </p>
+            <ul className="space-y-2 ml-4 list-disc">
+              <li>Record a <strong>5-minute video</strong> (using Loom or Google Drive)</li>
+              <li>Send your <strong>ID and education certificates</strong> to careers@unedp.org</li>
+            </ul>
+            <p className="mt-2 text-blue-800">
+              <strong>Important:</strong> Please complete this within <strong>3 days</strong> for your application to be considered.
+            </p>
+          </div>
           <Button
             variant="outline"
-            className="mt-4 bg-transparent"
+            className="mt-6 bg-transparent"
             onClick={() => (window.location.href = "/careers")}
           >
             View Other Positions
@@ -279,7 +325,7 @@ export function ApplicationForm({ jobId, jobTitle }: ApplicationFormProps) {
           </Button>
 
           <p className="text-center text-xs text-muted-foreground">
-            By submitting, you agree to our privacy policy and consent to UNEDF
+            By submitting, you agree to our privacy policy and consent to UNEDP
             processing your data for recruitment purposes.
           </p>
         </form>
