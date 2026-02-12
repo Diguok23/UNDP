@@ -61,14 +61,15 @@ export default function AdminRegisterPage() {
     }
 
     try {
+      console.log("[v0] Starting signup process")
       const supabase = createClient()
+      console.log("[v0] Supabase client created")
 
       const { data, error: signUpError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
-          emailRedirectTo: process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL ||
-            `${window.location.origin}/setup/login`,
+          emailRedirectTo: `${typeof window !== 'undefined' ? window.location.origin : ''}/setup/login`,
           data: {
             full_name: formData.fullName,
             department: formData.department,
@@ -80,16 +81,23 @@ export default function AdminRegisterPage() {
 
       if (signUpError) {
         console.error("[v0] Signup error:", signUpError)
+        console.error("[v0] Error message:", signUpError.message)
+        console.error("[v0] Error status:", signUpError.status)
+        
         if (signUpError.message.includes("already registered")) {
           setError("This email is already registered. Please sign in instead.")
         } else if (signUpError.message.includes("valid email")) {
           setError("Please enter a valid email address.")
+        } else if (signUpError.message.includes("Failed to fetch")) {
+          setError("Unable to connect to the server. Please check your internet connection and try again.")
         } else {
           setError(signUpError.message || "Failed to create account. Please try again.")
         }
         setIsLoading(false)
         return
       }
+      
+      console.log("[v0] Signup successful, user created:", data.user?.id)
 
       // Check if user was created successfully
       if (!data?.user) {
