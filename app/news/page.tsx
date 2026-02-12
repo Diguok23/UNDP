@@ -30,7 +30,7 @@ const articles = [
     title: "Empowering Women Entrepreneurs in Nigeria",
     slug: "empowering-women-nigeria",
     excerpt: "How small business support is transforming communities and creating economic opportunities for women across Nigeria. A look at the impact of microfinance and skills training programs.",
-    image: "/images/image-18-credit-undp-nigeria-amalachukwu-ibeneme-crop.jpg",
+    image: "/images/image-18-credit-UNEDP -nigeria-amalachukwu-ibeneme-crop.jpg",
     date: "January 28, 2026",
     category: "features",
     topic: "Gender Equality",
@@ -41,7 +41,7 @@ const articles = [
     title: "Solar Power Brings Clean Water to Rural Afghanistan",
     slug: "solar-power-afghanistan",
     excerpt: "Renewable energy solutions are providing sustainable access to clean water for communities in remote areas, improving health and livelihoods for thousands of families.",
-    image: "/images/image-1-credit-undp-afghanistan.jpg",
+    image: "/images/image-1-credit-UNEDP -afghanistan.jpg",
     date: "January 25, 2026",
     category: "features",
     topic: "Climate Action",
@@ -52,7 +52,7 @@ const articles = [
     title: "Sustainable Agriculture in Cuba",
     slug: "sustainable-agriculture-cuba",
     excerpt: "Supporting farmers with climate-smart practices to build resilient food systems and protect biodiversity in the face of changing climate conditions.",
-    image: "/images/undp-cu-diosmara-farm-2025.jpg",
+    image: "/images/UNEDP -cu-diosmara-farm-2025.jpg",
     date: "January 22, 2026",
     category: "features",
     topic: "Climate Action",
@@ -60,7 +60,7 @@ const articles = [
   },
   {
     id: 4,
-    title: "UNDP Administrator Visits Climate-Vulnerable Nations",
+    title: "UNEDP  Administrator Visits Climate-Vulnerable Nations",
     slug: "administrator-climate-visit",
     excerpt: "Administrator highlights urgent need for increased climate finance and support for developing countries on the frontlines of the climate crisis.",
     image: "/images/human-development-healthy-planet.jpg",
@@ -84,7 +84,7 @@ const articles = [
     id: 6,
     title: "Innovation Labs: Accelerating Development Solutions",
     slug: "innovation-labs-2025",
-    excerpt: "How UNDP's global network of Accelerator Labs is testing and scaling innovative approaches to development challenges.",
+    excerpt: "How UNEDP 's global network of Accelerator Labs is testing and scaling innovative approaches to development challenges.",
     image: "/images/human-development-healthy-planet.jpg",
     date: "January 15, 2026",
     category: "blog",
@@ -95,7 +95,7 @@ const articles = [
     id: 7,
     title: "Youth Leaders Drive Climate Action in Pacific Islands",
     slug: "youth-climate-pacific",
-    excerpt: "Young people across the Pacific are leading community-based climate adaptation initiatives with UNDP support.",
+    excerpt: "Young people across the Pacific are leading community-based climate adaptation initiatives with UNEDP  support.",
     image: "/images/good-stories.png",
     date: "January 12, 2026",
     category: "features",
@@ -107,7 +107,7 @@ const articles = [
     title: "Strengthening Electoral Systems in West Africa",
     slug: "elections-west-africa",
     excerpt: "Technical support for credible, inclusive elections across the region as several countries prepare for polls.",
-    image: "/images/undp60-crop.jpg",
+    image: "/images/UNEDP 60-crop.jpg",
     date: "January 10, 2026",
     category: "news",
     topic: "Governance",
@@ -327,7 +327,7 @@ export default function NewsPage() {
           <div className="mx-auto max-w-2xl text-center text-white">
             <h2 className="text-3xl font-bold md:text-4xl">Stay Informed</h2>
             <p className="mt-4 text-lg text-white/90">
-              Subscribe to receive the latest news and stories from UNDP directly in your inbox.
+              Subscribe to receive the latest news and stories from UNEDP  directly in your inbox.
             </p>
             <form className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-2">
               <input

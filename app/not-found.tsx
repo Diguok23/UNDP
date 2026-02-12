@@ -10,7 +10,7 @@ export default function NotFound() {
         <div className="mb-8 flex justify-center">
           <img
             src="/images/unedf-logo.jpg"
-            alt="UN Economic Development Fund"
+            alt="UN Economic Development Programme "
             className="h-24 w-auto"
           />
         </div>
@@ -54,7 +54,7 @@ export default function NotFound() {
               className="flex items-center gap-2 text-sm text-primary hover:underline"
             >
               <ArrowLeft className="h-3 w-3" />
-              About UNEDF
+              About UNEDP
             </Link>
             <Link
               href="/countries"

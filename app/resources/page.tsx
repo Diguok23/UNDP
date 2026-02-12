@@ -42,7 +42,7 @@ const resources = [
     description: "Case studies from 20 countries showing what works in climate adaptation and mitigation at the community level.",
     category: "case-studies",
     date: "November 2025",
-    image: "/images/image-1-credit-undp-afghanistan.jpg",
+    image: "/images/image-1-credit-UNEDP-afghanistan.jpg",
     downloadUrl: "#",
     featured: false,
   },
@@ -52,7 +52,7 @@ const resources = [
     description: "Comprehensive data on gender disparities across health, empowerment, and labor market participation.",
     category: "data",
     date: "October 2025",
-    image: "/images/image-18-credit-undp-nigeria-amalachukwu-ibeneme-crop.jpg",
+    image: "/images/image-18-credit-UNEDP-nigeria-amalachukwu-ibeneme-crop.jpg",
     downloadUrl: "#",
     featured: false,
   },
@@ -79,10 +79,10 @@ const resources = [
   {
     id: 7,
     title: "Women's Economic Empowerment: Impact Assessment",
-    description: "Analysis of UNDP programs supporting women's economic participation across 30 countries.",
+    description: "Analysis of UNEDP programs supporting women's economic participation across 30 countries.",
     category: "case-studies",
     date: "July 2025",
-    image: "/images/image-18-credit-undp-nigeria-amalachukwu-ibeneme-crop.jpg",
+    image: "/images/image-18-credit-UNEDP-nigeria-amalachukwu-ibeneme-crop.jpg",
     downloadUrl: "#",
     featured: false,
   },
@@ -92,7 +92,7 @@ const resources = [
     description: "Data and analysis on global climate finance trends and gaps in developing countries.",
     category: "data",
     date: "June 2025",
-    image: "/images/image-1-credit-undp-afghanistan.jpg",
+    image: "/images/image-1-credit-UNEDP-afghanistan.jpg",
     downloadUrl: "#",
     featured: false,
   },
@@ -102,14 +102,14 @@ const resources = [
     description: "Operational guidance for rapid response to humanitarian emergencies while maintaining development focus.",
     category: "tools",
     date: "May 2025",
-    image: "/images/undp-cu-diosmara-farm-2025.jpg",
+    image: "/images/UNEDP-cu-diosmara-farm-2025.jpg",
     downloadUrl: "#",
     featured: false,
   },
   {
     id: 10,
     title: "Annual Report 2024",
-    description: "UNDP's comprehensive overview of results, impact, and financial performance for 2024.",
+    description: "UNEDP's comprehensive overview of results, impact, and financial performance for 2024.",
     category: "reports",
     date: "April 2025",
     image: "/images/good-stories.png",
@@ -299,13 +299,13 @@ export default function ResourcesPage() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button asChild className="bg-[#0468B1] hover:bg-[#035a9c]">
-              <Link href="https://hdr.undp.org/data-center" target="_blank">
+              <Link href="https://hdr.UNEDP.org/data-center" target="_blank">
                 Human Development Data
               </Link>
             </Button>
             <Button asChild variant="outline">
-              <Link href="https://data.undp.org" target="_blank">
-                UNDP Data Futures Platform
+              <Link href="https://data.UNEDP.org" target="_blank">
+                UNEDP Data Futures Platform
               </Link>
             </Button>
           </div>

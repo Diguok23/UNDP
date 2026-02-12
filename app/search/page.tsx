@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge"
 const searchableContent = [
   {
     type: "page",
-    title: "About UNDP",
+    title: "About UNEDP",
     description: "Learn about our mission, vision, and 60 years of development work.",
     url: "/about",
     category: "Pages"
@@ -55,11 +55,11 @@ const searchableContent = [
   },
   {
     type: "news",
-    title: "UNDP launches new climate resilience initiative in Africa",
+    title: "UNEDP launches new climate resilience initiative in Africa",
     description: "A groundbreaking program to help 10 African nations adapt to climate change impacts.",
     url: "/news/climate-resilience-africa",
     category: "News",
-    image: "/images/image-18-credit-undp-nigeria-amalachukwu-ibeneme-crop.jpg"
+    image: "/images/image-18-credit-UNEDP-nigeria-amalachukwu-ibeneme-crop.jpg"
   },
   {
     type: "news",
@@ -67,7 +67,7 @@ const searchableContent = [
     description: "Renewable energy solutions bringing clean water to remote communities.",
     url: "/news/solar-water-afghanistan",
     category: "News",
-    image: "/images/image-1-credit-undp-afghanistan.jpg"
+    image: "/images/image-1-credit-UNEDP-afghanistan.jpg"
   },
   {
     type: "news",
@@ -75,7 +75,7 @@ const searchableContent = [
     description: "Climate-smart farming practices increasing yields and incomes.",
     url: "/news/sustainable-agriculture-cuba",
     category: "News",
-    image: "/images/undp-cu-diosmara-farm-2025.jpg"
+    image: "/images/UNEDP-cu-diosmara-farm-2025.jpg"
   },
   {
     type: "resource",
@@ -95,14 +95,14 @@ const searchableContent = [
   {
     type: "resource",
     title: "Climate Promise Progress Report",
-    description: "Tracking UNDP's support for countries implementing their climate commitments.",
+    description: "Tracking UNEDP's support for countries implementing their climate commitments.",
     url: "/resources",
     category: "Resources"
   },
   {
     type: "country",
     title: "Afghanistan",
-    description: "UNDP's work in Afghanistan focuses on livelihoods, governance, and community resilience.",
+    description: "UNEDP's work in Afghanistan focuses on livelihoods, governance, and community resilience.",
     url: "/countries/afghanistan",
     category: "Countries"
   },
@@ -166,7 +166,7 @@ function SearchContent() {
       <section className="bg-primary py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-8 text-center">
-            Search UNDP
+            Search UNEDP
           </h1>
           <div className="max-w-2xl mx-auto">
             <form 
@@ -292,7 +292,7 @@ function SearchContent() {
               <Search className="h-16 w-16 text-muted-foreground/50 mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-2">Start searching</h3>
               <p className="text-muted-foreground mb-6">
-                Enter keywords to search across all UNDP content including pages, news, resources, and country information.
+                Enter keywords to search across all UNEDP content including pages, news, resources, and country information.
               </p>
               <div className="max-w-xl mx-auto">
                 <h4 className="font-semibold mb-3">Popular searches:</h4>

@@ -6,8 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "About UNDP | United Nations Development Programme",
-  description: "Learn about UNDP's mission, vision, history, and leadership. Working in 170+ countries to eradicate poverty and build sustainable development.",
+  title: "About UNEDP | United Nations Development Programme",
+  description: "Learn about UNEDP's mission, vision, history, and leadership. Working in 170+ countries to eradicate poverty and build sustainable development.",
 }
 
 const coreValues = [
@@ -33,30 +33,30 @@ const leadership = [
     name: "Achim Steiner",
     role: "Administrator",
     image: "/images/adc-bio.jpg",
-    bio: "The Administrator of UNDP leads the organization's global mission to eradicate poverty and reduce inequalities through sustainable development.",
+    bio: "The Administrator of UNEDP leads the organization's global mission to eradicate poverty and reduce inequalities through sustainable development.",
   },
 ]
 
 const timeline = [
   {
     year: "1965",
-    title: "UNDP Established",
+    title: "UNEDP Established",
     description: "The United Nations Development Programme was created by merging the UN Expanded Programme of Technical Assistance and the UN Special Fund.",
   },
   {
     year: "1990",
     title: "First Human Development Report",
-    description: "UNDP published the first Human Development Report, introducing a new way of measuring development beyond income.",
+    description: "UNEDP published the first Human Development Report, introducing a new way of measuring development beyond income.",
   },
   {
     year: "2000",
     title: "Millennium Development Goals",
-    description: "UNDP played a central role in the creation and implementation of the Millennium Development Goals.",
+    description: "UNEDP played a central role in the creation and implementation of the Millennium Development Goals.",
   },
   {
     year: "2015",
     title: "Sustainable Development Goals",
-    description: "UNDP became the lead UN agency for the 2030 Agenda and the 17 Sustainable Development Goals.",
+    description: "UNEDP became the lead UN agency for the 2030 Agenda and the 17 Sustainable Development Goals.",
   },
   {
     year: "2025",
@@ -73,7 +73,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl text-white">
             <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl text-balance">
-              About UNDP
+              About UNEDP
             </h1>
             <p className="mt-6 text-xl text-white/90 leading-relaxed">
               The United Nations Development Programme works in about 170 countries and territories, 
@@ -97,13 +97,13 @@ export default function AboutPage() {
                 Eradicating Poverty. Reducing Inequalities. Building Resilience.
               </h2>
               <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                UNDP helps countries develop strong policies, skills, partnerships and institutions 
+                UNEDP helps countries develop strong policies, skills, partnerships and institutions 
                 so they can sustain their progress. We are on the ground in about 170 countries and 
                 territories, working with governments and people on their own solutions to global 
                 and national development challenges.
               </p>
               <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                As the UN's lead agency on sustainable development, UNDP is uniquely positioned to 
+                As the UN's lead agency on sustainable development, UNEDP is uniquely positioned to 
                 help implement the Sustainable Development Goals through our work in some 170 countries 
                 and territories.
               </p>
@@ -179,14 +179,14 @@ export default function AboutPage() {
                 60 Years of Global Development
               </h2>
               <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                Since 1965, UNDP has been at the forefront of the global development agenda, 
+                Since 1965, UNEDP has been at the forefront of the global development agenda, 
                 adapting to changing challenges while maintaining our core commitment to 
                 sustainable human development.
               </p>
               <div className="relative mt-8 aspect-video overflow-hidden rounded-lg">
                 <Image
-                  src="/images/undp60-crop.jpg"
-                  alt="UNDP founding in 1965"
+                  src="/images/UNEDP60-crop.jpg"
+                  alt="UNEDP founding in 1965"
                   fill
                   className="object-cover"
                 />
@@ -220,7 +220,7 @@ export default function AboutPage() {
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our Leadership</h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Meet the leaders guiding UNDP's global mission for sustainable development.
+              Meet the leaders guiding UNEDP's global mission for sustainable development.
             </p>
           </div>
 
