@@ -1,0 +1,200 @@
+-- Seed comprehensive job listings for UNEDP
+-- Entry-level Programme Support, Communications, Data, HR, and Admin roles
+
+INSERT INTO jobs (title, slug, location, job_type, department, level, salary_range, description, requirements, responsibilities, benefits, featured, active)
+VALUES
+-- Entry-Level Support Roles
+('Programme Support Assistant (Entry Level)', 'programme-support-assistant-entry', 'Nairobi office', 'Contract', 'Programme Support', 'Entry Level', 'Competitive', 
+'Support the effective planning, implementation, and monitoring of programme activities by providing administrative, coordination, and reporting assistance. The role contributes to timely delivery of programme outputs, strengthened stakeholder coordination, and smooth day-to-day operations in support of the organization''s mandate.', 
+'First-level university degree in international relations, development studies, public administration, or related field; Minimum 1 year relevant experience (desirable); Proficiency in Microsoft Office; English fluency required',
+'Assist in preparation and organization of programme activities, meetings, workshops; Provide logistical support including drafting agendas and meeting notes; Maintain programme files and databases; Support preparation of progress reports; Liaise with internal units and external partners',
+'Professional development opportunities; UN system benefits; Flexible work arrangements; Health and wellness support',
+true, true),
+
+('Communications Assistant (Entry Level)', 'communications-assistant-entry', 'New York office', 'Contract', 'Communications', 'Entry Level', 'Competitive',
+'Support the organization''s outreach and visibility efforts through the development of communication materials and digital content. The role contributes to increased public awareness, stakeholder engagement, and effective dissemination of key messages.',
+'First-level university degree in communications, journalism, public relations, or related field; Previous internship or entry-level experience in communications, media, or digital content management; Strong writing and editing skills; English fluency required',
+'Assist in drafting and editing content for websites, newsletters, social media platforms, and reports; Support preparation of communication materials such as fact sheets and talking points; Conduct basic research for storytelling and communication campaigns; Manage social media accounts and track analytics',
+'Professional growth in global communications; Exposure to UN system; Training in digital communication tools; Collaborative international environment',
+false, true),
+
+('Data and Research Assistant (Entry Level)', 'data-research-assistant-entry', 'Geneva office', 'Contract', 'Research & Monitoring', 'Entry Level', 'Competitive',
+'Support evidence-based decision-making by assisting with data collection, analysis, and research activities. The role contributes to improved reporting quality, informed policy discussions, and strengthened programme planning.',
+'First-level university degree in economics, statistics, social sciences, data science, or related field; Familiarity with data analysis tools (Excel, Power BI); Strong analytical and organizational skills; English fluency required',
+'Assist in collecting, cleaning, and organizing qualitative and quantitative data; Support basic data analysis using spreadsheets and statistical tools; Maintain databases and ensure data accuracy; Conduct desk research on assigned topics; Support preparation of reports and charts',
+'Exposure to UN research standards; Data analysis skill development; Access to research databases and tools; International collaboration opportunities',
+false, true),
+
+('Human Resources Assistant (Entry Level)', 'human-resources-assistant-entry', 'Vienna office', 'Contract', 'Human Resources', 'Entry Level', 'Competitive',
+'Support efficient human resources operations by providing administrative and coordination assistance. The role contributes to transparent recruitment processes, accurate personnel records, and effective HR service delivery.',
+'First-level university degree in human resources management, business administration, or related field; Prior internship or entry-level experience in HR or administration; Attention to detail and strong organizational skills; English fluency required',
+'Assist in recruitment processes including vacancy announcements and application screening; Maintain HR records and databases; Support onboarding and separation processes; Respond to routine HR inquiries; Assist in preparing HR statistics and reports',
+'HR system training; Recruitment experience; Professional HR network access; Career development in HR field',
+false, true),
+
+-- Administrative and Finance Roles
+('Administrative Assistant (Entry Level)', 'administrative-assistant-entry-nairobi', 'Nairobi office', 'Contract', 'Administration', 'Entry Level', 'Competitive',
+'Support efficient administrative and operational processes by providing clerical, logistical, and coordination support. The role contributes to smooth office operations, timely service delivery, and effective support to programme and management teams.',
+'First-level university degree in business administration, public administration, or related field; Prior internship or entry-level experience in administration or office support; Proficiency in Microsoft Office; English fluency required',
+'Provide general administrative assistance including filing and record-keeping; Assist with meeting logistics and room bookings; Support travel arrangements and processing of travel documentation; Maintain office supply inventory; Support data entry and database maintenance',
+'Office management experience; Professional development; Multilingual environment; Career progression opportunities',
+false, true),
+
+('Finance and Budget Assistant (Entry Level)', 'finance-budget-assistant-entry', 'Nairobi office', 'Contract', 'Finance', 'Entry Level', 'Competitive',
+'Support accurate financial management and budget monitoring through administrative and accounting assistance. The role contributes to financial accountability, compliance with UN financial rules, and efficient use of resources.',
+'First-level university degree in accounting, finance, economics, or related field; Knowledge of basic accounting principles; Familiarity with ERP systems (e.g., Umoja) advantageous; English fluency required',
+'Assist in processing invoices, payments, and financial transactions; Support budget tracking and expenditure monitoring; Maintain financial records and supporting documentation; Assist in preparing financial summaries; Support account reconciliation',
+'Accounting experience; ERP system training; Financial management skills development; Compliance knowledge',
+false, true),
+
+-- Monitoring and Field Support Roles
+('Monitoring and Evaluation Assistant (Entry Level)', 'monitoring-evaluation-assistant-entry', 'Nairobi office', 'Contract', 'Monitoring & Evaluation', 'Entry Level', 'Competitive',
+'Support results-based management through data collection, monitoring, and reporting assistance. The role contributes to improved programme performance, accountability, and evidence-based decision-making.',
+'First-level university degree in development studies, economics, statistics, or related field; Familiarity with results-based management concepts; Strong analytical and organizational skills; English fluency required',
+'Assist in collecting and organizing programme performance data; Maintain indicators and monitoring databases; Support field data collection and validation exercises; Assist in drafting progress reports; Support basic data analysis and visualization',
+'Field experience; M&E framework training; Database management skills; Programme management exposure',
+false, true),
+
+('Procurement Assistant (Entry Level)', 'procurement-assistant-entry', 'Nairobi office', 'Contract', 'Procurement', 'Entry Level', 'Competitive',
+'Support procurement and supply chain activities through administrative and coordination assistance. The role contributes to timely acquisition of goods and services in compliance with UN procurement policies.',
+'First-level university degree in business administration, supply chain management, or related field; Knowledge of procurement principles; Attention to detail and strong organizational skills; English fluency required',
+'Assist in preparing procurement requests and solicitation documents; Support vendor registration; Track procurement cases and follow up on delivery timelines; Maintain procurement files and documentation; Assist in preparing procurement statistics',
+'Procurement process knowledge; Vendor management experience; Supply chain understanding; UN procurement standards training',
+false, true),
+
+('Programme Communications and Outreach Assistant (Entry Level)', 'programme-communications-outreach-entry', 'Nairobi office', 'Contract', 'Communications & Outreach', 'Entry Level', 'Competitive',
+'Support outreach, visibility, and stakeholder engagement activities by assisting with communication and advocacy initiatives. The role contributes to increased awareness of programme objectives and strengthened partnerships.',
+'First-level university degree in communications, international relations, or related field; Strong writing and organizational skills; Experience with social media platforms; English fluency required',
+'Assist in preparing outreach materials including briefs and presentations; Support organization of events, workshops, and stakeholder meetings; Assist in documenting activities through reports and photos; Liaise with internal teams on communication tasks',
+'Event management experience; Social media skills; Outreach campaign experience; Stakeholder engagement knowledge',
+false, true),
+
+-- Knowledge and Partnership Roles
+('Knowledge Management Assistant (Entry Level)', 'knowledge-management-assistant-entry', 'Nairobi office', 'Contract', 'Knowledge Management', 'Entry Level', 'Competitive',
+'Support the systematic capture, organization, and dissemination of knowledge products and information assets. The role contributes to improved institutional learning, information sharing, and evidence-based decision-making.',
+'First-level university degree in information management, library science, development studies, or related field; Strong organizational and documentation skills; Familiarity with document management systems; English fluency required',
+'Assist in organizing, categorizing, and archiving documents and knowledge products; Maintain shared drives and repositories; Support version control and document quality assurance; Assist in compiling lessons learned and best practices',
+'Document management systems training; Information architecture understanding; Knowledge sharing platform experience; Library science exposure',
+false, true),
+
+('Partnerships and Resource Mobilization Assistant (Entry Level)', 'partnerships-resource-mobilization-entry', 'Nairobi office', 'Contract', 'Partnerships', 'Entry Level', 'Competitive',
+'Support partnership development and resource mobilization efforts through research, coordination, and administrative assistance. The role contributes to strengthened donor engagement and sustainable financing of programmes.',
+'First-level university degree in international relations, economics, development studies, or related field; Strong research and writing skills; Attention to detail and coordination skills; English fluency required',
+'Assist in mapping potential partners and funding opportunities; Support preparation of donor briefs and concept notes; Maintain partnership and donor databases; Assist in organizing donor meetings; Track partnership commitments',
+'Donor engagement experience; Partnership development skills; Research capabilities; Resource mobilization knowledge',
+false, true),
+
+-- Specialized Support Roles
+('Gender and Social Inclusion Assistant (Entry Level)', 'gender-social-inclusion-assistant-entry', 'Nairobi office', 'Contract', 'Gender & Inclusion', 'Entry Level', 'Competitive',
+'Support the integration of gender equality and social inclusion considerations into programme design and implementation. The role contributes to inclusive, equitable, and rights-based development outcomes.',
+'First-level university degree in gender studies, social sciences, international development, or related field; Knowledge of gender mainstreaming concepts; Strong analytical and communication skills; English fluency required',
+'Assist in integrating gender and inclusion considerations into programme documents; Support data collection disaggregated by gender and other variables; Assist in organizing gender-related trainings and campaigns; Contribute to gender analyses and progress reports',
+'Gender analysis skills; Social inclusion expertise; Rights-based approach training; Advocacy experience',
+false, true),
+
+('Environmental Affairs Assistant (Entry Level)', 'environmental-affairs-assistant-entry', 'Nairobi office', 'Contract', 'Environment', 'Entry Level', 'Competitive',
+'Support environmental programme implementation through research, coordination, and reporting assistance. The role contributes to effective delivery of environmental initiatives and strengthened policy support.',
+'First-level university degree in environmental studies, natural sciences, or related field; Interest in environmental policy and sustainability; Strong research and organizational skills; English fluency required',
+'Assist in conducting desk research on environmental topics; Support preparation of technical notes and briefs; Assist in organizing environmental events and consultations; Maintain programme records; Assist in drafting progress reports',
+'Environmental policy knowledge; Sustainability understanding; Research skills; Conference and event experience',
+false, true),
+
+('Logistics and Operations Assistant (Entry Level)', 'logistics-operations-assistant-entry', 'Nairobi office', 'Contract', 'Operations', 'Entry Level', 'Competitive',
+'Support logistics and operational processes by providing coordination and administrative assistance. The role contributes to timely delivery of services, effective asset management, and smooth operational support to programmes.',
+'First-level university degree in logistics, business administration, or related field; Interest in operations and logistics functions; Strong organizational and coordination skills; English fluency required',
+'Assist in coordinating transport, equipment, and facilities-related services; Support inventory tracking and asset management; Assist in processing service requests and operational documentation; Maintain operational records and databases',
+'Logistics coordination experience; Asset management skills; Vendor coordination; Operations procedures knowledge',
+false, true),
+
+-- Field Operations Roles
+('Field Operations Assistant (Entry Level)', 'field-operations-assistant-entry', 'Nairobi office, with frequent travel to field locations', 'Contract', 'Field Operations', 'Entry Level', 'Competitive',
+'Support the effective planning, coordination, and implementation of field operations by providing administrative, logistical, and operational assistance. The role contributes to timely delivery of field activities and efficient execution of programmes at the community level.',
+'First-level university degree in development studies, public administration, or related field; Prior internship or volunteer experience in field activities; Strong organizational skills; Willingness and ability to travel to field locations; English fluency required',
+'Assist in planning and coordinating field missions; Support deployment of field teams with equipment and supplies; Coordinate with local partners and authorities; Maintain field operation records; Assist in compiling field mission reports',
+'Field experience; Travel opportunities; Community engagement; Operational logistics skills; Cultural exchange',
+true, true),
+
+('Field Programme Assistant (Entry Level)', 'field-programme-assistant-entry', 'Nairobi with deployment to field locations', 'Contract', 'Field Programmes', 'Entry Level', 'Competitive',
+'Support the delivery of programme activities at the field level through coordination, monitoring, and community engagement assistance. The role contributes to effective programme implementation and achievement of intended results.',
+'First-level university degree in international development, social sciences, or related field; Experience in community engagement or field-based projects; Strong communication and interpersonal skills; English fluency; Kiswahili desirable',
+'Assist in implementing programme activities in field locations; Support coordination with implementing partners and local authorities; Assist in organizing field trainings and community meetings; Support monitoring data collection; Assist in drafting field progress updates',
+'Community experience; Programme implementation skills; Local engagement knowledge; Beneficiary feedback collection; Impact measurement',
+true, true),
+
+('Field Monitoring and Reporting Assistant (Entry Level)', 'field-monitoring-reporting-assistant-entry', 'Nairobi with frequent travel to project sites', 'Contract', 'Monitoring & Evaluation', 'Entry Level', 'Competitive',
+'Support monitoring and reporting of field activities through systematic data collection and verification. The role contributes to accountability, quality assurance, and evidence-based programme management.',
+'First-level university degree in statistics, economics, development studies, or related field; Basic knowledge of M&E frameworks; Strong analytical and documentation skills; English fluency required',
+'Conduct field visits to monitor ongoing activities; Collect quantitative and qualitative data from beneficiaries and partners; Support verification of outputs against indicators; Assist in compiling monitoring reports; Maintain monitoring databases',
+'Field monitoring experience; Data collection skills; Quality assurance understanding; Site verification experience; M&E systems knowledge',
+true, true),
+
+('Community Liaison Assistant (Entry Level)', 'community-liaison-assistant-entry', 'Nairobi with regular field assignments', 'Contract', 'Community Engagement', 'Entry Level', 'Competitive',
+'Support effective engagement with communities and local stakeholders through outreach, coordination, and information-sharing activities. The role contributes to inclusive participation and community-informed programme delivery.',
+'First-level university degree in social sciences, community development, or related field; Strong interpersonal and facilitation skills; Experience working with communities; English fluency; Kiswahili or local languages highly desirable',
+'Support engagement with community leaders and beneficiaries; Assist in organizing community consultations and awareness sessions; Support programme information dissemination at community level; Document community feedback and concerns; Maintain stakeholder contact lists',
+'Community engagement expertise; Facilitation skills; Cultural sensitivity; Feedback collection; Conflict resolution; Stakeholder relations',
+true, true),
+
+('Field Logistics and Operations Assistant (Entry Level)', 'field-logistics-operations-assistant-entry', 'Nairobi with frequent field travel', 'Contract', 'Logistics', 'Entry Level', 'Competitive',
+'Support logistics and operational functions in field activities by providing coordination and administrative assistance. The role contributes to timely delivery of supplies and effective asset management in field operations.',
+'First-level university degree in logistics, supply chain management, or related field; Interest in operations and logistics; Strong organizational skills; English fluency required',
+'Assist in coordinating transport, accommodation, and equipment for field missions; Support inventory management at field sites; Assist in receiving and distributing supplies; Maintain logistics records and asset registers; Support vendor coordination',
+'Field logistics experience; Supply chain management; Asset tracking; Vendor relationships; Operational procedures; Emergency response support',
+false, true),
+
+('Field Data Collection and Verification Assistant (Entry Level)', 'field-data-collection-verification-entry', 'Nairobi with deployment to field project sites', 'Contract', 'Data Management', 'Entry Level', 'Competitive',
+'Support field operations through accurate data collection and verification. The role contributes to reliable reporting, programme learning, and improved decision-making.',
+'First-level university degree in statistics, social sciences, or related field; Familiarity with data collection methodologies; Willingness to work in field conditions; English fluency; Kiswahili highly desirable',
+'Collect data using surveys, interviews, focus group discussions, and observation tools; Ensure accuracy and completeness of collected data; Support use of digital and mobile data collection platforms; Assist in organizing and cleaning field data; Assist in verifying data quality',
+'Data collection methodology knowledge; Mobile technology skills; Quality control procedures; Beneficiary engagement; Field research methods; Statistical literacy',
+true, true),
+
+-- Humanitarian Roles
+('Humanitarian Affairs Assistant (Entry Level)', 'humanitarian-affairs-assistant-entry', 'Nairobi with frequent travel to humanitarian field locations', 'Contract', 'Humanitarian Affairs', 'Entry Level', 'Competitive',
+'Support the coordination, implementation, and reporting of humanitarian activities by providing analytical, administrative, and field coordination assistance. The role contributes to timely humanitarian response and effective support to affected populations.',
+'First-level university degree in international relations, humanitarian studies, development studies, or related field; Prior internship or volunteer experience in humanitarian or emergency settings; Strong coordination and analytical skills; English fluency required',
+'Assist in organizing humanitarian coordination meetings and briefings; Support information-sharing among UN agencies and partners; Support field missions to humanitarian response areas; Assist in collecting information on humanitarian needs and response gaps; Support preparation of situation reports',
+'Humanitarian experience; Coordination skills; Emergency response knowledge; Inter-agency collaboration; Situation analysis; Affected population engagement',
+true, true),
+
+('Protection Assistant (Entry Level – Humanitarian)', 'protection-assistant-humanitarian-entry', 'Nairobi with deployment to humanitarian field locations', 'Contract', 'Protection', 'Entry Level', 'Competitive',
+'Support protection-focused humanitarian interventions through monitoring, community engagement, and documentation. The role contributes to safeguarding the rights and dignity of vulnerable populations affected by crisis.',
+'First-level university degree in law, social work, human rights, social sciences, or related field; Knowledge of protection principles and humanitarian standards; Strong interpersonal skills; English fluency; Kiswahili highly desirable',
+'Support protection monitoring activities in displacement-affected communities; Assist in identifying protection risks and concerns; Support community-based protection initiatives; Assist in documenting protection cases and trends; Support referrals to appropriate services',
+'Protection monitoring experience; Human rights knowledge; Vulnerability assessment; Referral pathways; Confidentiality protocols; Trauma-informed approach; Advocacy skills',
+true, true),
+
+('Emergency Response Assistant (Entry Level)', 'emergency-response-assistant-entry', 'Nairobi with rapid deployment to emergency response locations', 'Contract', 'Emergency Response', 'Entry Level', 'Competitive',
+'Support rapid humanitarian response efforts through operational coordination, data collection, and field support. The role contributes to timely delivery of life-saving assistance during emergencies.',
+'First-level university degree in humanitarian studies, disaster management, development studies, or related field; Ability to work under pressure in rapidly changing environments; Willingness to deploy on short notice; English fluency required',
+'Assist in coordinating emergency response activities at field level; Support deployment logistics for emergency teams and supplies; Assist in organizing emergency coordination meetings; Support rapid needs assessments; Assist in compiling emergency situation reports',
+'Emergency response experience; Rapid assessment skills; Surge capacity support; Inter-agency coordination; Crisis management; Pressure resilience; Quick decision-making',
+true, true),
+
+('Food Security and Livelihoods Assistant (Entry Level – Humanitarian)', 'food-security-livelihoods-assistant-entry', 'Nairobi with frequent travel to humanitarian programme sites', 'Contract', 'Food Security', 'Entry Level', 'Competitive',
+'Support humanitarian food security and livelihoods interventions through field coordination, monitoring, and reporting assistance. The role contributes to improved food access and recovery of affected populations.',
+'First-level university degree in agriculture, economics, development studies, or related field; Interest in humanitarian food security and livelihoods programming; Strong organizational and communication skills; English fluency; Kiswahili desirable',
+'Assist in implementing food security and livelihoods activities at field level; Support coordination with implementing partners and community groups; Assist in organizing beneficiary targeting and training activities; Support monitoring of food assistance interventions; Assist in collecting beneficiary feedback',
+'Food security knowledge; Livelihoods assessment; Beneficiary targeting; Training facilitation; Community-based approaches; Impact measurement; Livelihood restoration strategies',
+false, true),
+
+('Camp Coordination and Camp Management (CCCM) Assistant (Entry Level)', 'cccm-assistant-entry', 'Nairobi with frequent travel to displacement camps', 'Contract', 'CCCM', 'Entry Level', 'Competitive',
+'Support the coordination and management of displacement sites through field coordination, data collection, and stakeholder engagement. The role contributes to improved service delivery and protection for displaced populations.',
+'First-level university degree in humanitarian studies, social sciences, development studies, or related field; Familiarity with CCCM principles and humanitarian coordination; Strong interpersonal and coordination skills; English fluency; Kiswahili highly desirable',
+'Assist in coordinating service delivery among humanitarian partners in camps; Support organization of camp coordination meetings; Assist in maintaining records of service providers and gaps; Support monitoring of camp conditions and infrastructure; Support facilitation of community feedback mechanisms',
+'Camp management experience; Coordination skills; Service mapping; Needs assessment; Community participation; Complaint mechanisms; Site profile development',
+false, true),
+
+('Refugee Assistance and Registration Assistant (Entry Level)', 'refugee-assistance-registration-entry', 'Nairobi with deployment to refugee camps and reception centers', 'Contract', 'Refugee Services', 'Entry Level', 'Competitive',
+'Support refugee assistance and registration processes through data management, field coordination, and beneficiary support. The role contributes to accurate population data and equitable access to assistance.',
+'First-level university degree in social sciences, information management, or related field; Attention to detail and ability to handle sensitive information; Experience in data entry or beneficiary-focused work; English fluency required',
+'Assist in refugee registration, verification, and data updating processes; Support use of registration systems in line with data protection standards; Assist in maintaining accurate population records; Support communication with refugees regarding procedures; Assist in managing beneficiary flow',
+'Registration systems knowledge; Data protection protocols; Beneficiary communication; Registration procedures; Population management; Cultural sensitivity; Confidentiality; Information systems',
+false, true),
+
+('Water, Sanitation and Hygiene (WASH) Assistant (Entry Level – Humanitarian)', 'wash-assistant-humanitarian-entry', 'Nairobi with frequent travel to humanitarian programme sites', 'Contract', 'WASH', 'Entry Level', 'Competitive',
+'Support WASH humanitarian interventions through field coordination, monitoring, and reporting assistance. The role contributes to improved water access and disease prevention for crisis-affected populations.',
+'First-level university degree in public health, environmental health, engineering, or related field; Interest in humanitarian WASH programming; Willingness to work in field conditions; English fluency required',
+'Assist in supporting implementation of WASH activities at field level; Support coordination with implementing partners and community groups; Assist in organizing hygiene promotion sessions; Support monitoring of WASH infrastructure and service delivery; Assist in collecting WASH data and indicators',
+'WASH programme management; Water supply systems; Sanitation facility design; Hygiene promotion; Community mobilization; Disease prevention; Technical WASH knowledge; Infrastructure monitoring',
+false, true);

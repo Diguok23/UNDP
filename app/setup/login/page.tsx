@@ -6,6 +6,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
+import { isAllowedDomain, getGenericDomainError } from "@/lib/auth/domain-validator"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -27,6 +28,13 @@ export default function AdminLoginPage() {
     setError(null)
     setIsLoading(true)
 
+    // Validate domain
+    if (!isAllowedDomain(email)) {
+      setError(getGenericDomainError())
+      setIsLoading(false)
+      return
+    }
+
     const supabase = createClient()
 
     const { data, error: signInError } = await supabase.auth.signInWithPassword({
@@ -35,20 +43,25 @@ export default function AdminLoginPage() {
     })
 
     if (signInError) {
+      console.error("[v0] Sign in error:", signInError)
       setError(signInError.message)
       setIsLoading(false)
       return
     }
 
-    // Check if user is admin
-    if (!data.user?.user_metadata?.is_admin) {
-      setError("You do not have administrator access. Please contact your system administrator.")
-      await supabase.auth.signOut()
+    // Verify user exists and has authenticated successfully
+    if (!data?.user) {
+      setError("Login failed. Please try again.")
       setIsLoading(false)
       return
     }
 
-    router.push("/setup")
+    console.log("[v0] User logged in successfully:", data.user.id)
+    console.log("[v0] User email:", data.user.email)
+
+    // User is authenticated, redirect to admin dashboard
+    console.log("[v0] Authenticated user, redirecting to admin dashboard")
+    router.push("/setup/dashboard")
     router.refresh()
   }
 
@@ -125,9 +138,9 @@ export default function AdminLoginPage() {
           </CardContent>
           <CardFooter className="flex flex-col gap-4">
             <div className="text-center text-sm text-muted-foreground">
-              {"Don't have admin access? "}
+              {"Don't have an account? "}
               <Link href="/setup/register" className="text-primary hover:underline">
-                Request access
+                Create one
               </Link>
             </div>
             <div className="text-center text-sm">

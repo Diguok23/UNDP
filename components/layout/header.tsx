@@ -51,10 +51,6 @@ export function Header() {
               alt="UN Economic Development Programme Logo" 
               className="h-12 w-auto"
             />
-            <div className="hidden flex-col sm:flex">
-              <span className="text-xs font-semibold text-primary">UN Economic Development Programme</span>
-              <span className="text-lg font-bold text-primary">UNEDP</span>
-            </div>
           </Link>
 
           {/* Desktop Navigation */}

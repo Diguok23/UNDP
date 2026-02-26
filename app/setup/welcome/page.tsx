@@ -4,8 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Shield, Users, Globe, Newspaper, FileText, Briefcase } from "lucide-react"
 
 export const metadata = {
-  title: "Admin Portal | UNEDF",
-  description: "UNEDF Administration Portal - Manage website content, jobs, and more.",
+  title: "Admin Portal | UNEDP",
+  description: "UNEDP Administration Portal - Manage website content, jobs, and more.",
 }
 
 export default function AdminWelcomePage() {
@@ -16,8 +16,8 @@ export default function AdminWelcomePage() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-3">
             <img 
-              src="/images/unedf-logo.jpg" 
-              alt="UNEDF Logo" 
+              src="/images/unedp-logo.jpg" 
+              alt="UNEDP Logo" 
               className="h-10 w-auto"
             />
             <div className="hidden sm:block">
@@ -44,7 +44,7 @@ export default function AdminWelcomePage() {
             </div>
           </div>
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl text-balance">
-            UNEDF Administration Portal
+            UNEDP Administration Portal
           </h1>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
             Manage your organization's website content, post job opportunities, 
@@ -132,7 +132,7 @@ export default function AdminWelcomePage() {
       {/* Footer */}
       <footer className="border-t bg-muted/30 py-8">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} UN Economic Development Fund (UNEDF). All rights reserved.</p>
+          <p>© {new Date().getFullYear()} UN Economic Development Programme (UNEDP). All rights reserved.</p>
           <p className="mt-2">
             <Link href="/" className="hover:text-foreground">
               Return to main website
