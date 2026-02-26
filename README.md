@@ -1,30 +1,58 @@
-# Untitled Chat
+# UNEDP Platform
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+[![Live on Vercel](https://img.shields.io/badge/Live%20Deployment-Vercel-black?style=for-the-badge&logo=vercel)](https://unedp.org)
+[![Status](https://img.shields.io/badge/Status-Production-success?style=for-the-badge)]
+[![Built with TypeScript](https://img.shields.io/badge/Built%20With-TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)]
+[![Database](https://img.shields.io/badge/Database-PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)]
+[![Hosted on Supabase](https://img.shields.io/badge/Hosted%20on-Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)]
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/info-24040794s-projects/v0-untitled-chat)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/enithUMT5yE)
+---
 
-## Overview
+## 🌍 Overview
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+The **UNEDP Platform** is a production-ready web application designed, built, and maintained by the **UN Technical Team**.
 
-## Deployment
+It is engineered for scalability, reliability, and performance using a modern serverless architecture.
 
-Your project is live at:
+---
 
-**[https://vercel.com/info-24040794s-projects/v0-untitled-chat](https://vercel.com/info-24040794s-projects/v0-untitled-chat)**
+## 🚀 Live Application
 
-## Build your app
+The application is publicly available at:
 
-Continue building your app on:
+### 🔗 https://unedp.org
 
-**[https://v0.app/chat/enithUMT5yE](https://v0.app/chat/enithUMT5yE)**
+Deployed globally using **Vercel** for fast, secure, and continuous delivery.
 
-## How It Works
+---
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+## 🏗️ Technology Stack
+
+- **TypeScript** – Strongly typed application development  
+- **PostgreSQL** – Reliable relational database system  
+- **Supabase** – Serverless database hosting and backend services  
+- **Vercel** – Cloud hosting and CI/CD deployment platform  
+
+---
+
+## ⚙️ Architecture
+
+- Serverless database infrastructure powered by **Supabase**
+- Production-grade **PostgreSQL** database
+- Optimized deployment pipeline via **Vercel**
+- Continuous integration and automatic production updates
+
+---
+
+## 🔄 Deployment Workflow
+
+1. Codebase maintained by the UN Technical Team  
+2. Changes pushed to the production repository  
+3. Vercel automatically builds and deploys  
+4. Live updates reflected at **https://unedp.org**
+
+---
+
+## 👨‍💻 Management
+
+Built and managed by the **UN Technical Team**.
