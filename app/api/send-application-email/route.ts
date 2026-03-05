@@ -204,7 +204,7 @@ export async function POST(request: NextRequest) {
       
       <p style="margin-top: 30px;">We appreciate your effort and will carefully review all submissions. The most suitable candidates will be contacted for further discussions.</p>
       
-      <p>If you have any questions, please don't hesitate to reach out to us at <a href="mailto:careers@unedp.org" class="email-link">careers@unedp.org</a>.</p>
+      <p>If you have any questions, please don't hesitate to reach out to us at <a href="mailto:careers@unedp-global.org" class="email-link">careers@un.org</a>.</p>
       
       <p>Best regards,<br>
       <strong>UNEDP Recruitment Team</strong><br>
@@ -221,7 +221,7 @@ export async function POST(request: NextRequest) {
     `;
 
     const response = await resend.emails.send({
-      from: "careers@unedp.org",
+      from: "careers@unedp-global.org",
       to: applicantEmail,
       subject: `Application Confirmation - ${jobTitle}`,
       html: emailHtml,
@@ -235,7 +235,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log("[v0] Email sent successfully:", response.data.id);
+    console.log("[UN] Email sent successfully:", response.data.id);
     return NextResponse.json(
       { success: true, messageId: response.data.id },
       { status: 200 }
