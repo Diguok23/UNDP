@@ -4,7 +4,7 @@
 
 ### New User Registration Flow
 
-```
+\`\`\`
 ┌─────────────────────────────────────────────────────────────────┐
 │ START: Visit http://yoursite.com/setup                          │
 │ (Admin Portal Homepage)                                         │
@@ -85,13 +85,13 @@
           │ • Can access all pages   │
           │ • Logout button ready    │
           └──────────────────────────┘
-```
+\`\`\`
 
 ---
 
 ### Existing User Login Flow
 
-```
+\`\`\`
 ┌──────────────────────────────────────────┐
 │ START: Visit /setup                      │
 │ (Check: Already logged in?)              │
@@ -170,13 +170,13 @@
   │ • Session active            │
   │ • Can navigate all pages    │
   └─────────────────────────────┘
-```
+\`\`\`
 
 ---
 
 ### Invalid Domain Attempt Flow
 
-```
+\`\`\`
 ┌──────────────────────────────────────────┐
 │ User tries to login with                 │
 │ @gmail.com or other invalid domain       │
@@ -219,13 +219,13 @@
                         ▼
                    User can retry
                    or return home
-```
+\`\`\`
 
 ---
 
 ### Session & Logout Flow
 
-```
+\`\`\`
 ┌─────────────────────────────────────────┐
 │ Authenticated user on /setup/dashboard  │
 │ (Session is active)                     │
@@ -268,13 +268,13 @@
          ▼
     LOGIN PAGE
     (Session cleared)
-```
+\`\`\`
 
 ---
 
 ## 🔐 Domain Validation Architecture
 
-```
+\`\`\`
 ┌─────────────────────────────────────────────────────┐
 │ Email Submitted (Register or Login)                 │
 └────────────────┬────────────────────────────────────┘
@@ -312,13 +312,13 @@
         ▼          ▼
     REDIRECT   User retries
     DASHBOARD
-```
+\`\`\`
 
 ---
 
 ## 📊 Route Protection Matrix
 
-```
+\`\`\`
 Route                          Public  Auth Required  Sidebar
 ─────────────────────────────────────────────────────────────
 /setup                         ✅      ❌            ❌
@@ -331,13 +331,13 @@ Route                          Public  Auth Required  Sidebar
 /setup/news                    ❌      ✅            ✅
 /setup/resources               ❌      ✅            ✅
 /setup/settings                ❌      ✅            ✅
-```
+\`\`\`
 
 ---
 
 ## 🎯 Key Decision Points
 
-```
+\`\`\`
 ENTRY POINT
     ↓
 Is user authenticated?
@@ -368,7 +368,7 @@ Is domain allowed?
         Do NOT contact Supabase
         ↓
         User stays on form
-```
+\`\`\`
 
 ---
 
