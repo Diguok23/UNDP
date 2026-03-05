@@ -100,11 +100,11 @@ The authentication system relies on:
 If you encounter authentication issues:
 
 1. **Check Supabase Connection:**
-   ```bash
+   \`\`\`bash
    // Verify credentials are correct in .env.local
    NEXT_PUBLIC_SUPABASE_URL=your_project_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
-   ```
+   \`\`\`
 
 2. **Verify User Account:**
    - Go to Supabase Dashboard

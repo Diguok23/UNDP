@@ -88,7 +88,7 @@ export function ApplicationForm({ jobId, jobTitle }: ApplicationFormProps) {
       });
 
       // Send confirmation email
-      console.log("[v0] Sending confirmation email to:", formData.email);
+      console.log("UNEDP Sending confirmation email to:", formData.email);
       const emailResponse = await fetch("/api/send-application-email", {
         method: "POST",
         headers: {
@@ -104,12 +104,12 @@ export function ApplicationForm({ jobId, jobTitle }: ApplicationFormProps) {
 
       if (!emailResponse.ok) {
         console.warn(
-          "[v0] Failed to send confirmation email:",
+          "Failed to send confirmation email:",
           emailResponse.statusText
         );
         // Don't fail the application submission if email fails
       } else {
-        console.log("[v0] Confirmation email sent successfully");
+        console.log("Confirmation email sent successfully");
       }
 
       setSuccess(true);
@@ -140,7 +140,7 @@ export function ApplicationForm({ jobId, jobTitle }: ApplicationFormProps) {
             </p>
             <ul className="space-y-2 ml-4 list-disc">
               <li>Record a <strong>5-minute video</strong> (using Loom or Google Drive)</li>
-              <li>Send your <strong>ID and education certificates</strong> to careers@unedp.org</li>
+              <li>Send your <strong>ID and education certificates</strong> to careers@unedp-global.org</li>
             </ul>
             <p className="mt-2 text-blue-800">
               <strong>Important:</strong> Please complete this within <strong>3 days</strong> for your application to be considered.

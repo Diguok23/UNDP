@@ -79,7 +79,7 @@ Comprehensive help page covering:
 5. Page refreshes and user can log in
 
 ## Database Schema
-```sql
+\`\`\`sql
 -- admin_users table
 CREATE TABLE public.admin_users (
   id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -92,7 +92,7 @@ CREATE TABLE public.admin_users (
   created_at timestamptz DEFAULT now(),
   updated_at timestamptz DEFAULT now()
 );
-```
+\`\`\`
 
 ## Testing the Fix
 

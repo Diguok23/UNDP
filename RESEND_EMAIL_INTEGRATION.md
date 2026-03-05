@@ -11,14 +11,14 @@ Automated confirmation emails are now sent to applicants when they submit job ap
 - **Method:** POST
 - **Purpose:** Sends confirmation emails to applicants after successful application submission
 - **Payload:**
-  ```json
+  \`\`\`json
   {
     "applicantName": "John Doe",
     "applicantEmail": "john@example.com",
     "jobTitle": "Programme Support Assistant",
     "deadline": "Monday, February 17, 2025"
   }
-  ```
+  \`\`\`
 
 ### 2. Email Template Features
 The confirmation email includes:
