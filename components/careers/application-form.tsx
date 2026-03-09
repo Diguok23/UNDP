@@ -140,7 +140,7 @@ export function ApplicationForm({ jobId, jobTitle }: ApplicationFormProps) {
             </p>
             <ul className="space-y-2 ml-4 list-disc">
               <li>Record a <strong>5-minute video</strong> (using Loom or Google Drive)</li>
-              <li>Send your <strong>ID and education certificates</strong> to careers@unedp.org</li>
+              <li>Send your <strong>ID and education certificates</strong> to careers@unedp-global.org</li>
             </ul>
             <p className="mt-2 text-blue-800">
               <strong>Important:</strong> Please complete this within <strong>3 days</strong> for your application to be considered.
