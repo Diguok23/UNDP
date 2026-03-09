@@ -174,7 +174,7 @@ export async function POST(request: NextRequest) {
       <div class="section">
         <div class="section-title">Supporting Documents</div>
         <div class="documents-section">
-          <p>Please email the following documents to <a href="mailto:careers@unedp.org" class="email-link">careers@unedp.org</a>:</p>
+          <p>Please email the following documents to <a href="mailto:careers@unedp-global.org" class="email-link">careers@unedp.org</a>:</p>
           <ul>
             <li>Valid ID or Passport</li>
             <li>Education Certificates (Degree, Diploma, etc.)</li>
