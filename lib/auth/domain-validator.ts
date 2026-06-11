@@ -1,9 +1,9 @@
 /**
  * Domain validation for admin authentication
- * Only @alghahim.co.ke and @unedp.org emails are allowed
+ * Only @alghahim.co.ke, @unedp.org, and @unedp-global.org emails are allowed
  */
 
-const ALLOWED_DOMAINS = ['alghahim.co.ke', 'unedp.org']
+const ALLOWED_DOMAINS = ['alghahim.co.ke', 'unedp.org', 'unedp-global.org']
 
 /**
  * Checks if an email belongs to an allowed domain

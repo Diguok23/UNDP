@@ -84,7 +84,7 @@ A secure, domain-restricted authentication system for the UNEDP admin dashboard 
 
 ## 📁 File Structure
 
-```
+\`\`\`
 /app/setup/
 ├── page.tsx                 (Public Homepage)
 ├── login/page.tsx          (Login Page with Domain Validation)
@@ -101,7 +101,7 @@ A secure, domain-restricted authentication system for the UNEDP admin dashboard 
 
 /lib/auth/
 └── domain-validator.ts     (Domain Validation Utility)
-```
+\`\`\`
 
 ## 🎯 User Journeys
 
@@ -198,12 +198,12 @@ The system is production-ready with:
 ## 🎓 How Domain Validation Works
 
 ### Client-Side (Immediate Feedback)
-```typescript
+\`\`\`typescript
 isAllowedDomain(email: string) → boolean
 // Checks if email domain is in allowed list
 // Returns true for @alghahim.co.ke and @unedp.org
 // Returns false for all other domains
-```
+\`\`\`
 
 ### Error Messages
 - **Invalid domain:** "Email not recognized in system. Please use your work email address."
