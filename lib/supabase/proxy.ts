@@ -6,11 +6,24 @@ export async function updateSession(request: NextRequest) {
     request,
   })
 
+  // Check for required environment variables
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.error('[v0] Missing Supabase environment variables:', {
+      hasUrl: !!supabaseUrl,
+      hasKey: !!supabaseAnonKey,
+    })
+    // Return response without Supabase auth if env vars are missing
+    return supabaseResponse
+  }
+
   // With Fluid compute, don't put this client in a global environment
   // variable. Always create a new one on each request.
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         getAll() {
@@ -37,35 +50,40 @@ export async function updateSession(request: NextRequest) {
 
   // IMPORTANT: If you remove getUser() and you use server-side rendering
   // with the Supabase client, your users may be randomly logged out.
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  let user = null
+  try {
+    const {
+      data: { user: authUser },
+      error,
+    } = await supabase.auth.getUser()
+    
+    if (error) {
+      console.error('[v0] Error getting user:', error.message)
+    } else {
+      user = authUser
+    }
+  } catch (err) {
+    console.error('[v0] Exception getting user:', err instanceof Error ? err.message : 'Unknown error')
+  }
 
   // Allow access to admin auth pages without authentication
-  const adminAuthPaths = ['/setup/login', '/setup/register', '/setup/welcome']
+  const adminAuthPaths = ['/setup/login', '/setup/register', '/setup/welcome', '/setup/page']
   const isAdminAuthPath = adminAuthPaths.some(path => request.nextUrl.pathname.startsWith(path))
   
-  // Protect /setup admin route - require authenticated admin (except auth pages)
-  if (request.nextUrl.pathname.startsWith('/setup') && !isAdminAuthPath) {
+  // Protect /setup/dashboard and other admin routes - require authenticated user (except auth pages)
+  if (request.nextUrl.pathname.startsWith('/setup/dashboard') || 
+      (request.nextUrl.pathname.startsWith('/setup') && !isAdminAuthPath && request.nextUrl.pathname !== '/setup')) {
     if (!user) {
       const url = request.nextUrl.clone()
       url.pathname = '/setup/login'
       return NextResponse.redirect(url)
     }
-    // Check if user is admin
-    const isAdmin = user.user_metadata?.is_admin === true
-    if (!isAdmin) {
-      const url = request.nextUrl.clone()
-      url.pathname = '/setup/login'
-      url.searchParams.set('error', 'not_admin')
-      return NextResponse.redirect(url)
-    }
   }
   
-  // Redirect authenticated admins away from admin auth pages
-  if (isAdminAuthPath && user?.user_metadata?.is_admin === true) {
+  // Redirect authenticated users away from admin auth pages
+  if (isAdminAuthPath && user) {
     const url = request.nextUrl.clone()
-    url.pathname = '/setup'
+    url.pathname = '/setup/dashboard'
     return NextResponse.redirect(url)
   }
 
