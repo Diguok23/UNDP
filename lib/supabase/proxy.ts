@@ -10,12 +10,18 @@ export async function updateSession(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
+  // Skip Supabase auth check if env vars are not available
   if (!supabaseUrl || !supabaseAnonKey) {
-    console.error('[v0] Missing Supabase environment variables:', {
-      hasUrl: !!supabaseUrl,
-      hasKey: !!supabaseAnonKey,
-    })
-    // Return response without Supabase auth if env vars are missing
+    console.warn('[v0] Supabase environment variables not available, skipping auth check')
+    // For public pages, allow access
+    // For protected pages, redirect to login
+    if (request.nextUrl.pathname.startsWith('/setup/dashboard') || 
+        (request.nextUrl.pathname.startsWith('/setup') && 
+         !['login', 'register', 'welcome'].some(p => request.nextUrl.pathname.includes(p)))) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/setup/login'
+      return NextResponse.redirect(url)
+    }
     return supabaseResponse
   }
 
