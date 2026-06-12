@@ -1,11 +1,8 @@
+'use client'
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { LogIn, UserPlus, Lock, Clock, Shield, BarChart3 } from "lucide-react"
-
-export const metadata = {
-  title: "Admin Portal | UNEDP",
-  description: "UNEDP Administration Portal - Manage careers, content, and operations.",
-}
 
 export default function SetupHomePage() {
   return (
