@@ -29,7 +29,6 @@ interface EmailTemplate {
 }
 
 export default function EmailTemplatesPage() {
-  const supabase = createClient()
   const [templates, setTemplates] = useState<EmailTemplate[]>([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
@@ -48,6 +47,7 @@ export default function EmailTemplatesPage() {
   const loadTemplates = async () => {
     setLoading(true)
     try {
+      const supabase = createClient()
       const { data, error } = await supabase
         .from('email_templates')
         .select('*')
