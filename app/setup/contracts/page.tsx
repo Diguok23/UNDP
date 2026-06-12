@@ -38,7 +38,6 @@ const statusColors: Record<string, string> = {
 }
 
 export default function ContractsPage() {
-  const supabase = createClient()
   const [contracts, setContracts] = useState<Contract[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -48,6 +47,7 @@ export default function ContractsPage() {
 
   const loadContracts = async () => {
     setLoading(true)
+    const supabase = createClient()
     try {
       const { data, error } = await supabase
         .from('contracts')

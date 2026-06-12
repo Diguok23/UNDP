@@ -18,7 +18,6 @@ import { Mail, Send, AlertCircle } from 'lucide-react'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 
 export default function BulkEmailsPage() {
-  const supabase = createClient()
   const [subject, setSubject] = useState('')
   const [body, setBody] = useState('')
   const [status, setStatus] = useState('interview')
@@ -35,6 +34,7 @@ export default function BulkEmailsPage() {
 
     setSending(true)
     try {
+      const supabase = createClient()
       // Fetch applications with selected status
       const { data: applications, error } = await supabase
         .from('applications')

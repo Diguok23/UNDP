@@ -43,7 +43,6 @@ const statusColors: Record<string, string> = {
 }
 
 export default function OfferLettersPage() {
-  const supabase = createClient()
   const [offerLetters, setOfferLetters] = useState<OfferLetter[]>([])
   const [loading, setLoading] = useState(true)
   const [sendingId, setSendingId] = useState<string | null>(null)
@@ -55,6 +54,7 @@ export default function OfferLettersPage() {
   const loadOfferLetters = async () => {
     setLoading(true)
     try {
+      const supabase = createClient()
       const { data, error } = await supabase
         .from('offer_letters')
         .select(
