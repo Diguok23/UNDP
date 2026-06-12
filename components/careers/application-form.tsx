@@ -88,7 +88,7 @@ export function ApplicationForm({ jobId, jobTitle }: ApplicationFormProps) {
       });
 
       // Send confirmation email
-      console.log("[v0] Sending confirmation email to:", formData.email);
+      console.log("UNEDP Sending confirmation email to:", formData.email);
       const emailResponse = await fetch("/api/send-application-email", {
         method: "POST",
         headers: {
@@ -104,12 +104,12 @@ export function ApplicationForm({ jobId, jobTitle }: ApplicationFormProps) {
 
       if (!emailResponse.ok) {
         console.warn(
-          "[v0] Failed to send confirmation email:",
+          "Failed to send confirmation email:",
           emailResponse.statusText
         );
         // Don't fail the application submission if email fails
       } else {
-        console.log("[v0] Confirmation email sent successfully");
+        console.log("Confirmation email sent successfully");
       }
 
       setSuccess(true);

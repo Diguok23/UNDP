@@ -116,7 +116,7 @@
 ## Database Schema
 
 ### admin_users Table
-```sql
+\`\`\`sql
 - id (uuid, primary key, references auth.users.id)
 - email (text, not null)
 - full_name (text)
@@ -126,10 +126,10 @@
 - is_active (boolean, default true)
 - created_at (timestamptz)
 - updated_at (timestamptz)
-```
+\`\`\`
 
 ### Jobs Table (30+ entries)
-```sql
+\`\`\`sql
 - id (uuid)
 - title (text)
 - slug (text, unique)
@@ -147,7 +147,7 @@
 - featured (boolean)
 - created_at (timestamptz)
 - updated_at (timestamptz)
-```
+\`\`\`
 
 ## Troubleshooting
 

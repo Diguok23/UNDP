@@ -121,6 +121,42 @@ export default function ApplicationDetailPage() {
     setSaving(false);
   };
 
+  const handleSendOfferLetter = async () => {
+    if (!application) return;
+    
+    const positionTitle = prompt("Enter position title:", application.jobs?.title || "");
+    if (!positionTitle) return;
+
+    const salary = prompt("Enter salary (optional):", "");
+    const startDate = prompt("Enter start date (optional, format: YYYY-MM-DD):", "");
+
+    setSaving(true);
+    try {
+      const response = await fetch("/api/send-offer-letter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          applicationId: application.id,
+          positionTitle,
+          salary: salary || null,
+          startDate: startDate || null,
+          applicantEmail: application.email,
+          applicantName: application.full_name,
+        }),
+      });
+
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error);
+
+      alert("Offer letter sent successfully!");
+    } catch (err) {
+      console.error("[v0] Error sending offer letter:", err);
+      alert("Failed to send offer letter");
+    } finally {
+      setSaving(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -376,6 +412,17 @@ export default function ApplicationDetailPage() {
                   Send Email
                 </Button>
               </a>
+              {status === "interview" && (
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-start bg-transparent"
+                  onClick={handleSendOfferLetter}
+                  disabled={saving}
+                >
+                  <Mail className="mr-2 h-4 w-4" />
+                  Send Offer Letter
+                </Button>
+              )}
               {application.resume_url && (
                 <a
                   href={application.resume_url}

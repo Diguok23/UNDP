@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     const { applicantName, applicantEmail, jobTitle, deadline } = body;
 
     console.log(
-      "UNDP Sending confirmation email to:",
+      "[v0] Sending confirmation email to:",
       applicantEmail,
       "for job:",
       jobTitle
@@ -174,8 +174,7 @@ export async function POST(request: NextRequest) {
       <div class="section">
         <div class="section-title">Supporting Documents</div>
         <div class="documents-section">
-          <p>Please email the following documents to <a href="mailto:careers@unedp-global.org" class="email-link">careers@unedp-global.org
-</a>:</p>
+          <p>Please email the following documents to <a href="mailto:careers@unedp.org" class="email-link">careers@unedp.org</a>:</p>
           <ul>
             <li>Valid ID or Passport</li>
             <li>Education Certificates (Degree, Diploma, etc.)</li>
@@ -205,7 +204,7 @@ export async function POST(request: NextRequest) {
       
       <p style="margin-top: 30px;">We appreciate your effort and will carefully review all submissions. The most suitable candidates will be contacted for further discussions.</p>
       
-      <p>If you have any questions, please don't hesitate to reach out to us at <a href="mailto:careers@unedp-global.org" class="email-link">careers@unedp-global.org</a>.</p>
+      <p>If you have any questions, please don't hesitate to reach out to us at <a href="mailto:careers@unedp-global.org" class="email-link">careers@un.org</a>.</p>
       
       <p>Best regards,<br>
       <strong>UNEDP Recruitment Team</strong><br>
@@ -229,14 +228,14 @@ export async function POST(request: NextRequest) {
     });
 
     if (response.error) {
-      console.error("UNDP Resend error:", response.error);
+      console.error("[v0] Resend error:", response.error);
       return NextResponse.json(
         { error: "Failed to send email" },
         { status: 500 }
       );
     }
 
-    console.log("[UNDP] Email sent successfully:", response.data.id);
+    console.log("[UN] Email sent successfully:", response.data.id);
     return NextResponse.json(
       { success: true, messageId: response.data.id },
       { status: 200 }

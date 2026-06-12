@@ -17,13 +17,17 @@ import {
   ClipboardList,
   LogOut,
   Loader2,
+  Mail,
+  Send,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const sidebarLinks = [
   { href: "/setup/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/setup/jobs", label: "Jobs", icon: Briefcase },
   { href: "/setup/applications", label: "Applications", icon: ClipboardList },
+  { href: "/setup/offer-letters", label: "Offer Letters", icon: Mail },
+  { href: "/setup/bulk-emails", label: "Bulk Emails", icon: Send },
+  { href: "/setup/email-templates", label: "Email Templates", icon: Mail },
   { href: "/setup/countries", label: "Countries", icon: Globe },
   { href: "/setup/news", label: "News & Stories", icon: Newspaper },
   { href: "/setup/resources", label: "Resources", icon: FileText },

@@ -13,23 +13,23 @@ The original RLS (Row Level Security) policies on the `jobs` table had an issue:
 Updated the RLS policies on the `jobs` table with two new policies:
 
 ### 1. `allow_read_active_jobs` (Public Read Access)
-```sql
+\`\`\`sql
 CREATE POLICY "allow_read_active_jobs"
   ON public.jobs
   FOR SELECT
   USING (is_active = true);
-```
+\`\`\`
 - Allows **anyone** (authenticated or unauthenticated) to read jobs where `is_active = true`
 - This enables the careers page to display all published job listings publicly
 
 ### 2. `admin_full_access` (Admin Operations)
-```sql
+\`\`\`sql
 CREATE POLICY "admin_full_access"
   ON public.jobs
   FOR ALL
   USING (auth.role() = 'authenticated')
   WITH CHECK (auth.role() = 'authenticated');
-```
+\`\`\`
 - Allows authenticated users (admins) to perform all operations (SELECT, INSERT, UPDATE, DELETE)
 - Maintains admin functionality for managing job listings
 
