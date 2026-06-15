@@ -50,35 +50,42 @@ export async function updateSession(request: NextRequest) {
     },
   )
 
-  // Do not run code between createServerClient and
-  // supabase.auth.getUser(). A simple mistake could make it very hard to debug
-  // issues with users being randomly logged out.
-
-  // IMPORTANT: If you remove getUser() and you use server-side rendering
-  // with the Supabase client, your users may be randomly logged out.
+  // Public pages that don't require authentication
+  const publicPaths = ['/about', '/careers', '/countries', '/news', '/resources', '/search', '/what-we-do', '/issues']
+  const isPublicPage = publicPaths.some(path => request.nextUrl.pathname.startsWith(path))
+  
+  // Allow access to public pages and admin auth pages without authentication
+  const adminAuthPaths = ['/setup/login', '/setup/register', '/setup/welcome', '/setup']
+  const isAdminAuthPath = adminAuthPaths.some(path => request.nextUrl.pathname === path || (path !== '/setup' && request.nextUrl.pathname.startsWith(path)))
+  
   let user = null
-  try {
+  
+  // Only check user session if accessing protected routes
+  if (!isPublicPage && !isAdminAuthPath) {
+    try {
+      const {
+        data: { user: authUser },
+        error,
+      } = await supabase.auth.getUser()
+      
+      if (error) {
+        console.error('[v0] Error getting user:', error.message)
+      } else {
+        user = authUser
+      }
+    } catch (err) {
+      console.error('[v0] Exception getting user:', err instanceof Error ? err.message : 'Unknown error')
+    }
+  }
+  
+  // Protect /setup/dashboard and other admin routes - require authenticated user
+  if (request.nextUrl.pathname.startsWith('/setup/dashboard')) {
+    // Skip auth check if not accessing protected admin routes, just update cookies
     const {
       data: { user: authUser },
-      error,
     } = await supabase.auth.getUser()
+    user = authUser
     
-    if (error) {
-      console.error('[v0] Error getting user:', error.message)
-    } else {
-      user = authUser
-    }
-  } catch (err) {
-    console.error('[v0] Exception getting user:', err instanceof Error ? err.message : 'Unknown error')
-  }
-
-  // Allow access to admin auth pages without authentication
-  const adminAuthPaths = ['/setup/login', '/setup/register', '/setup/welcome', '/setup/page']
-  const isAdminAuthPath = adminAuthPaths.some(path => request.nextUrl.pathname.startsWith(path))
-  
-  // Protect /setup/dashboard and other admin routes - require authenticated user (except auth pages)
-  if (request.nextUrl.pathname.startsWith('/setup/dashboard') || 
-      (request.nextUrl.pathname.startsWith('/setup') && !isAdminAuthPath && request.nextUrl.pathname !== '/setup')) {
     if (!user) {
       const url = request.nextUrl.clone()
       url.pathname = '/setup/login'
@@ -87,10 +94,16 @@ export async function updateSession(request: NextRequest) {
   }
   
   // Redirect authenticated users away from admin auth pages
-  if (isAdminAuthPath && user) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/setup/dashboard'
-    return NextResponse.redirect(url)
+  if (isAdminAuthPath && !isPublicPage) {
+    const {
+      data: { user: authUser },
+    } = await supabase.auth.getUser()
+    
+    if (authUser) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/setup/dashboard'
+      return NextResponse.redirect(url)
+    }
   }
 
   if (
